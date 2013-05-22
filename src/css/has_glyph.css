@@ -1,0 +1,29 @@
+
+.glyph {
+  border:1px solid red;
+  display: inline-block;
+  line-height:30px;
+  text-align:center;
+  color:#666;
+  font-style:normal;
+  font-size:11px;
+  margin: 2px 4px 0 4px;
+  vertical-align:top;
+}
+
+.glyph.right {
+  margin:2px 4px 0 4px;
+}
+
+.glyph_right_wrapper {
+  text-align:right;
+}
+
+.glyph_left_wrapper {
+  text-align:left;
+  float:left;
+}
+
+.glyph_content_wrapper {
+  display: inline-block;
+}
