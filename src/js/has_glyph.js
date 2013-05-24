@@ -1,72 +1,81 @@
 // A mixin for dealing with glyphs in widgets 
 (function(){
 
-  var loadGlyph = function(name){
-    var className = 'glyph';
-    if(name.length === 1) {
-      var span = $.el.span({
-        className : className,
-        style : 'margin: 0 8px 0 0'
-      }, name);
-      return span;
-    }
-
-    else {
-      var div = $.el.div({
-        className : 'glyph'
-      });
-      $(div).css({
-        background : name,
-        width : Backbone.UI.HasGlyph.GLYPH_SIZE + 'px',
-        height : Backbone.UI.HasGlyph.GLYPH_SIZE + 'px'
-      });
-      return div;
-    }
+  var loadGlyph = function(name, size){
+    var div = $.el.div({
+      className : 'glyph'
+    });
+    $(div).css({
+      background : name,
+      width : size + 'px',
+      height : size + 'px'
+    });
+    return div;
   };
 
   Backbone.UI.HasGlyph = {
-    GLYPH_SIZE : 22,
+    GLYPH_PADDING : 3,
 
     options : {
       // a CSS background rule describing the glyph to show in a 
       // Backbone.UI.HasGlyph.GLYPH_SIZE size box on the left side 
       // of this widget
-      glyph : null,
+      glyphCss : null,
 
       // a CSS background rule describing the glyph to show in a 
       // Backbone.UI.HasGlyph.GLYPH_SIZE size box on the right side 
       // of this widget
-      glyphRight : null
+      glyphRightCss : null,
+
+      // The pixel size of the width and height of a glyph
+      glyphSize : 26
     },
     
-    insertGlyphLayout : function(glyph, glyphRight, parent) {
+    insertGlyphLayout : function(glyphCss, glyphRightCss, parent) {
 
-      var contentWrapper = $.el.div({className : 'glyph_content_wrapper'});
-      var rightWrapper = glyphRight ? $.el.div({className : 'glyph_right_wrapper'}) : null;
-      var leftWrapper = glyph ? $.el.div({className : 'glyph_left_wrapper'}, contentWrapper) : null;
-
-      if(leftWrapper) {
-        leftWrapper.appendTo(parent);
-        $(parent).addClass('has_glyph');
-        leftWrapper.insertBefore(loadGlyph(glyph), contentWrapper);
+      var contentContainer = $.el.div({'className' : 'content'});
+      if(!glyphCss && !glyphRightCss) {
+        contentContainer.appendTo(parent);
+        return contentContainer;
       }
 
-      else {
-        contentWrapper.appendTo(parent);
-        $(parent).addClass('has_glyph_right');
+      var wrapper = $.el.div({className : 'glyph_wrapper'});
+      wrapper.appendTo(parent);
+
+      var padding = this.options.glyphSize + Backbone.UI.HasGlyph.GLYPH_PADDING;
+
+      if(glyphRightCss) {
+        var glyphRight = loadGlyph(glyphRightCss, this.options.glyphSize);
+        $(glyphRight).addClass('right');
+        glyphRight.appendTo(wrapper);
+        $(wrapper).addClass('has_glyph_right');
+        $(contentContainer).css({
+          marginRight : padding + 'px'
+        });
       }
 
-      if(rightWrapper) {
-        var contentParent = leftWrapper ? leftWrapper : rightWrapper;
-        contentWrapper.appendTo(contentParent);
-        if(leftWrapper) leftWrapper.appendTo(rightWrapper);
-        rightWrapper.appendTo(parent);
-        glyph = loadGlyph(glyphRight);
-        $(glyph).addClass('right');
-        glyph.appendTo(rightWrapper);
+      if(glyphCss) {
+        var glyphLeft = loadGlyph(glyphCss, this.options.glyphSize);
+        glyphLeft.appendTo(wrapper);
+        $(wrapper).addClass('has_glyph_right');
+        $(contentContainer).css({
+          marginLeft : padding + 'px'
+        });
       }
-      
-      return contentWrapper;
+
+      contentContainer.appendTo(wrapper);
+
+      return contentContainer;
+    },
+
+    resolveGlyph : function(model, content) {
+      if(content === null) return null;
+      var glyph = content;
+      if(_(model).exists()) {
+        glyph = this.resolveContent(model, content);
+        if(glyph === content && this.hasModelProperty(model, content)) glyph = null;
+      }
+      return glyph;
     }
   };
 }());
