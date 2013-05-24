@@ -73,7 +73,7 @@
       var glyph = content;
       if(_(model).exists()) {
         glyph = this.resolveContent(model, content);
-        if(glyph === content && this.hasModelProperty(model, content)) glyph = null;
+        if(glyph === content && _(model).hasProperty(content)) glyph = null;
       }
       return glyph;
     }

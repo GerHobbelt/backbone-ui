@@ -43,16 +43,12 @@
 
   _(Backbone.View.prototype).extend({
 
-    hasModelProperty : function(model, content) {
-      return _(model).exists() && _(content).exists() && 
-        (_(model[content]).exists() || (model.get && _(model.get(content)).exists()));
-    },
-
     // resolves the appropriate content from the given choices
     resolveContent : function(model, content) {
       model = _(model).exists() ? model : this.model;
       content = _(content).exists() ? content : this.options.content;
-      var hasModelProperty = this.hasModelProperty(model, content);
+      var hasModelProperty = _(model).hasProperty(content);
+      //hasModelProperty = _(model).exists() && _(content).exists();
       return _(content).isFunction() ? content(model) : 
         hasModelProperty && _(model[content]).isFunction() ? model[content]() : 
         hasModelProperty && _(_(model).resolveProperty(content)).isFunction() ? 
@@ -84,6 +80,11 @@
 
     exists : function(object) {
       return !_(object).isNull() && !_(object).isUndefined();
+    },
+
+    hasProperty : function(object, property) {
+      return _(object).exists() && _(property).exists() && (_(object[property]).exists() || 
+        (!!object.attributes && _(object.attributes[property]).exists()));
     },
     
     // resolves the value of the given property on the given 
