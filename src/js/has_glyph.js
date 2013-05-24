@@ -57,7 +57,7 @@
       if(glyphCss) {
         var glyphLeft = loadGlyph(glyphCss, this.options.glyphSize);
         glyphLeft.appendTo(wrapper);
-        $(wrapper).addClass('has_glyph_right');
+        $(wrapper).addClass('has_glyph');
         $(contentContainer).css({
           marginLeft : padding + 'px'
         });
