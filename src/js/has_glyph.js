@@ -17,16 +17,6 @@
     GLYPH_PADDING : 3,
 
     options : {
-      // a CSS background rule describing the glyph to show in a 
-      // Backbone.UI.HasGlyph.GLYPH_SIZE size box on the left side 
-      // of this widget
-      glyphCss : null,
-
-      // a CSS background rule describing the glyph to show in a 
-      // Backbone.UI.HasGlyph.GLYPH_SIZE size box on the right side 
-      // of this widget
-      glyphRightCss : null,
-
       // The pixel size of the width and height of a glyph
       glyphSize : 26
     },

@@ -156,6 +156,27 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+
+      var checkbox = new Backbone.UI.Checkbox({
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        content : 'check me'
+      }).render();
+      document.body.appendChild(checkbox.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      var group = new Backbone.UI.RadioGroup({
+        alternatives : items,
+        altLabelContent : 'label',
+        altGlyphCss : 'glyphCss',
+        altGlyphRightCss : 'glyphRightCss',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat'
+      }).render();
+      document.body.appendChild(group.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
     });
 
   </script>

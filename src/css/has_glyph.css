@@ -21,6 +21,10 @@
   height:28px;
 }
 
-.glyph_wrapper .content {
-  padding:0 3px;
+.glyph_wrapper.has_glyph > .content {
+  padding-left:3px;
+}
+
+.glyph_wrapper.has_glyph_right > .content {
+  padding-right:3px;
 }
