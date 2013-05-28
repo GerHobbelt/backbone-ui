@@ -107,7 +107,7 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(button.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     ok(!$(button.el).find('.glyph.right')[0]);
   });
@@ -121,7 +121,7 @@ $(document).ready(function() {
     ok(!$(button.el).find('.glyph.left')[0]);
 
     var rightImage = $(button.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 
   test("glyphNoBindingLeftRight", function() {
@@ -132,10 +132,10 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(button.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     var rightImage = $(button.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 
   test("glyphBindingLeft", function() {
@@ -151,7 +151,7 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(button.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     ok(!$(button.el).find('.glyph.right')[0]);
   });
@@ -169,7 +169,7 @@ $(document).ready(function() {
     }).render();
 
     var rightImage = $(button.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
 
     ok(!$(button.el).find('.glyph.left')[0]);
   });
@@ -189,9 +189,9 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(button.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     var rightImage = $(button.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 });

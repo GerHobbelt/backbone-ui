@@ -208,10 +208,10 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(field.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     var rightImage = $(field.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 
   test("glyphNoBindingLeft", function() {
@@ -221,7 +221,7 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(field.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     ok(!$(field.el).find('.glyph.right')[0]);
   });
@@ -235,7 +235,7 @@ $(document).ready(function() {
     ok(!$(field.el).find('.glyph.left')[0]);
 
     var rightImage = $(field.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 
   test("glyphBindingLeft", function() {
@@ -251,7 +251,7 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(textField.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     ok(!$(textField.el).find('.glyph.right')[0]);
   });
@@ -269,7 +269,7 @@ $(document).ready(function() {
     }).render();
 
     var rightImage = $(textField.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
 
     ok(!$(textField.el).find('.glyph.left')[0]);
   });
@@ -289,10 +289,10 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(textField.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     var rightImage = $(textField.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 
 

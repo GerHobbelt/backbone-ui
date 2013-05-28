@@ -91,7 +91,7 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     ok(!$(link.el).find('.glyph.right')[0]);
   });
@@ -103,7 +103,7 @@ $(document).ready(function() {
     }).render();
 
     var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
 
     ok(!$(link.el).find('.glyph.left')[0]);
   });
@@ -116,10 +116,10 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 
   test("glyphBindingLeft", function() {
@@ -135,7 +135,7 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     ok(!$(link.el).find('.glyph.right')[0]);
   });
@@ -153,7 +153,7 @@ $(document).ready(function() {
     }).render();
 
     var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
 
     ok(!$(link.el).find('.glyph.left')[0]);
   });
@@ -173,9 +173,9 @@ $(document).ready(function() {
     }).render();
 
     var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png\)$/.test(leftImage));
+    ok(/left.png"?\)$/.test(leftImage));
 
     var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png\)$/.test(rightImage));
+    ok(/right.png"?\)$/.test(rightImage));
   });
 });
