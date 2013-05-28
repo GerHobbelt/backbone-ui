@@ -102,6 +102,11 @@
       var glyphLeft = this.resolveGlyph(item, this.options.altGlyphCss);
       var glyphRight = this.resolveGlyph(item, this.options.altGlyphRightCss);
 
+      // since we're looking for a glyph value in a collection of alternatives,
+      // we enforce that the glyph css value must be present on each item
+      glyphLeft = glyphLeft === this.options.altGlyphCss ? null : glyphLeft;
+      glyphRight = glyphRight === this.options.altGlyphRightCss ? null : glyphRight;
+
       // insert glyphs
       var liElement = $.el.li(anchor);
       var contentEl = this.insertGlyphLayout(glyphLeft, glyphRight, anchor);

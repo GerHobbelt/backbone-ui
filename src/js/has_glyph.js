@@ -70,12 +70,11 @@
 
     resolveGlyph : function(model, content) {
       if(content === null) return null;
-      var glyph = content;
-      if(_(model).exists()) {
+      var glyph = null;
+      if(_(model).exists() && _((model.attributes || model)[content]).exists()) {
         glyph = this.resolveContent(model, content);
-        if(glyph === content && _(model).hasProperty(content)) glyph = null;
       }
-      return glyph;
+      return _(glyph).exists() ? glyph : content;
     }
   };
 }());
