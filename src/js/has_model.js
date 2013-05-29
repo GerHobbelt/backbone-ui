@@ -15,8 +15,8 @@
       // If present, a square glyph area will be added to the left side of this 
       // component, and the given string will be used as the full CSS background
       // property of that glyph area. This option is a no-op when applied 
-      // to a Calender component.  When working with Checkbox or RadioGroup 
-      // components, only the glyphRightCss property will be honored.
+      // to a Calender component.  When working with Checkbox components, 
+      // only the glyphRightCss property will be honored.
       glyphCss : null,
 
       // Same as above, but on the right side.

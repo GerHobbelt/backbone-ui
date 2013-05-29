@@ -177,6 +177,24 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+
+      var picker = new Backbone.UI.DatePicker({
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px'
+      }).render();
+      document.body.appendChild(picker.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      picker = new Backbone.UI.TimePicker({
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px'
+      }).render();
+      document.body.appendChild(picker.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
     });
 
   </script>

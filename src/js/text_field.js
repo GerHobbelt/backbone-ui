@@ -66,6 +66,8 @@
       var glyphRightCss = this.resolveGlyph(this.model, this.options.glyphRightCss);
       var contentEl = this.insertGlyphLayout(glyphCss, glyphRightCss, this.el);
       contentEl.appendChild($.el.div({className : 'input_wrapper'}, this.input));
+      if(glyphCss) $(this.el).addClass('has_glyph');
+      if(glyphRightCss) $(this.el).addClass('has_glyph_right');
       
       //this.el.appendChild($.el.div({className : 'input_wrapper'}, this.input));
 
