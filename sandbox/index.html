@@ -13,6 +13,7 @@
   <script src='../src/js/has_alternative_property.js'></script>
   <script src='../src/js/has_model.js'></script>
   <script src='../src/js/has_glyph.js'></script>
+  <script src='../src/js/has_form_label.js'></script>
   <script src='../src/js/drag_session.js'></script>
 
   <script src='../src/js/button.js'></script>
@@ -104,7 +105,8 @@
       var field = new Backbone.UI.TextField({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
+        content : 'text time',
+        formLabel : 'First Name'
       }).render();
       document.body.appendChild(field.el);
       $.el.br().appendTo(document.body);
@@ -113,7 +115,8 @@
 
       field = new Backbone.UI.TextField({
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
+        content : 'text time',
+        formLabel : 'Last Name'
       }).render();
       document.body.appendChild(field.el);
       $.el.br().appendTo(document.body);
