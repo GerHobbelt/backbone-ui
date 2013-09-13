@@ -139,7 +139,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      var link = new Backbone.UI.Link({
+      link = new Backbone.UI.Link({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         content : 'text time'
       }).render();
@@ -148,7 +148,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      var link = new Backbone.UI.Link({
+      link = new Backbone.UI.Link({
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
         content : 'text time'
       }).render();
@@ -158,7 +158,26 @@
       $.el.br().appendTo(document.body);
 
       var checkbox = new Backbone.UI.Checkbox({
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        content : 'check me'
+      }).render();
+      document.body.appendChild(checkbox.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      checkbox = new Backbone.UI.Checkbox({
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        content : 'check me'
+      }).render();
+      document.body.appendChild(checkbox.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      checkbox = new Backbone.UI.Checkbox({
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         content : 'check me'
       }).render();
       document.body.appendChild(checkbox.el);
