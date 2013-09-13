@@ -198,8 +198,7 @@
       $.el.br().appendTo(document.body);
 
       var picker = new Backbone.UI.DatePicker({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px'
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat'
       }).render();
       document.body.appendChild(picker.el);
       $.el.br().appendTo(document.body);
@@ -207,8 +206,7 @@
       $.el.br().appendTo(document.body);
 
       picker = new Backbone.UI.TimePicker({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px'
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat'
       }).render();
       document.body.appendChild(picker.el);
       $.el.br().appendTo(document.body);

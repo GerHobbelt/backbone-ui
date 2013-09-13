@@ -193,11 +193,10 @@
       font-weight:normal;
       color:#333;
       background-color:#eee;
-      border:1px solid #666;
+      border:none;
       line-height:1.25;
       display: inline-block;
       padding:6px 32px 6px 12px;
-      border-radius:4px;
       vertical-align:middle;
       text-decoration:none;
       cursor:pointer;
@@ -205,6 +204,14 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
+    }
+    
+    .pulldown .pulldown_wrapper {
+      display:inline-block;
+      background-color:#eee;
+      border:1px solid #666;
+      border-radius:4px;
+      padding:0 10px;
     }
 
     /*---------------- radio_group -------------------*/
@@ -435,11 +442,14 @@
     <div class="pulldown">
       <label>
         <span>Pulldown menu</span>
-        <select>
-          <option disabled="disabled">Select...</option>
-          <option>Americas</option>
-          <option>Africa</option>
-        </select>
+        <div class="pulldown_wrapper">
+          <i class="glyph" style="background: url(tier_target_icons.png) -1px -1px"></i>
+          <select>
+            <option disabled="disabled">Select...</option>
+            <option>Americas</option>
+            <option>Africa</option>
+          </select>
+        </div>  
       </label>
     </div>
   </section>
@@ -452,12 +462,27 @@
       <label>
         <input type="radio" name="group" value="1" checked="checked" />
         <i></i>
-        <span>Value 1</span>
+        <div class="radio_group_wrapper">
+          <i class="glyph" style="background: url(tier_target_icons.png) -1px -1px"></i>
+          <span>Value 1</span>
+        </div>  
       </label>
       <label>
         <input type="radio" name="group" value="2" />
         <i></i>
-        <span>Value 2</span>
+        <div class="radio_group_wrapper">
+          <span>Value 2</span>
+          <i class="glyph" style="background: url(tier_target_icons.png) -1px -29px"></i>
+        </div>
+      </label>
+      <label>
+        <input type="radio" name="group" value="3" />
+        <i></i>
+        <div class="radio_group_wrapper">
+          <i class="glyph" style="background: url(tier_target_icons.png) -1px -1px"></i>
+          <span>Value 3</span>
+          <i class="glyph" style="background: url(tier_target_icons.png) -1px -29px"></i>
+        </div>
       </label>
     </div>
   </section>
