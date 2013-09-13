@@ -81,7 +81,7 @@
       opacity: 0;
     }
 
-    #checked-failover:checked + i,
+    .checkbox #checked-failover:checked + i,
     .checkbox input + i {
       display: inline-block;
       position:absolute;
@@ -91,7 +91,7 @@
       border: 1px solid #666;
     }
 
-    #checked-failover:checked + i:before,
+    .checkbox #checked-failover:checked + i:before,
     .checkbox input:checked + i:before {
       content: "";
       position: absolute;
@@ -135,7 +135,7 @@
       font-size:16px;
     }
 
-    .text_field input.disabled {
+    .text_field.disabled input {
       filter:alpha(opacity=60);
       opacity:0.6;
     }
@@ -235,7 +235,7 @@
       opacity: 0;
     }
 
-    #checked-failover:checked + i,
+    .radio_group #checked-failover:checked + i,
     .radio_group input + i {
       display: inline-block;
       position:absolute;
@@ -246,7 +246,7 @@
       border: 1px solid #666;
     }
 
-    #checked-failover:checked + i:before,
+    .radio_group #checked-failover:checked + i:before,
     .radio_group input:checked + i:before {
       content: "";
       position: absolute;
@@ -274,7 +274,7 @@
     <h2>Checkbox</h2>
     <div class="checkbox">
       <label>
-        <input disabled type="checkbox" value="true" checked="checked">
+        <input type="checkbox" value="true" checked="checked">
         <i></i>
         <span>Counter Culture</span>
       </label>
