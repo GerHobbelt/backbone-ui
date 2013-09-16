@@ -84,7 +84,8 @@
       width:50px;
     }
 
-    section > div {
+    section > div,
+    td > div {
       margin-bottom:30px;
     }
 
@@ -94,64 +95,104 @@
     $(window).ready(function() {
       Backbone.UI.setSkin('perka');
 
+      //---------------------large button-------------------------//
       var largeGreenButton = new Backbone.UI.Button({
         content : 'Major action',
-        className : 'large green',
+        className : 'large green'
       }).render();
-      document.getElementById("44_b").appendChild(largeGreenButton.el);
 
       var largeLink = new Backbone.UI.Link({
         content : 'Secondary action',
-        className : 'large',
+        className : 'large'
       }).render();
-      document.getElementById("44_b").appendChild(largeLink.el);
+      document.getElementById("44_b").appendChild($.el.div(largeGreenButton.el,largeLink.el));
 
-      //buttons
+      //-----------------------medium button-----------------------//
+      var defaultButton = new Backbone.UI.Button({
+        content : 'Primary action'
+      }).render();
+
+      var defaultLink = new Backbone.UI.Link({
+        content : 'Secondary action'
+      }).render();
+      document.getElementById("36_b").appendChild($.el.div(defaultButton.el,defaultLink.el));
+
+      var defaultGlyphButton = new Backbone.UI.Button({
+        content : 'Primary action'
+      }).render();
+
+      var defaultGlyphLink = new Backbone.UI.Link({
+        content : 'Secondary action'
+      }).render();
+      document.getElementById("36_b").appendChild($.el.div(defaultGlyphButton.el,defaultGlyphLink.el));
+
+      var disabledButton = new Backbone.UI.Button({
+        content : 'Disabled State',
+        disabled : true
+      }).render();
+      document.getElementById("36_b").appendChild($.el.div(disabledButton.el));
+
+      //-----------------------small button-----------------------//
+      var smallButton = new Backbone.UI.Button({
+        content : 'Minor action',
+        className : 'small'
+      }).render();
+
+      document.getElementById("32_b").appendChild($.el.div(smallButton.el));
+
+      var smallGlyphButton = new Backbone.UI.Button({
+        content : 'With glyph',
+        className : 'small'
+      }).render();
+
+      document.getElementById("32_b").appendChild($.el.div(smallGlyphButton.el));
+
+      //-----------------------buttons-----------------------------//
       var orangeButton = new Backbone.UI.Button({
         content : 'Primary Action',
-        className : 'orange',
+        className : 'orange'
       }).render();
       document.getElementById("orange").appendChild(orangeButton.el);
 
       var orangeLink = new Backbone.UI.Link({
         content : 'Secondary Action',
-        className : 'orange',
+        className : 'orange'
       }).render();
       document.getElementById("orange").appendChild(orangeLink.el);
 
       var blueButton = new Backbone.UI.Button({
         content : 'Primary Action',
-        className : 'blue',
+        className : 'blue'
       }).render();
       document.getElementById("blue").appendChild(blueButton.el);
 
       var blueLink = new Backbone.UI.Link({
         content : 'Secondary Action',
-        className : 'blue',
+        className : 'blue'
       }).render();
       document.getElementById("blue").appendChild(blueLink.el);
 
       var greenButton = new Backbone.UI.Button({
         content : 'Primary Action',
-        className : 'green',
+        className : 'green'
       }).render();
       document.getElementById("green").appendChild(greenButton.el);
 
       var greenLink = new Backbone.UI.Link({
         content : 'Secondary Action',
-        className : 'green',
+        className : 'green'
       }).render();
       document.getElementById("green").appendChild(greenLink.el);
 
       var lightBlueButton = new Backbone.UI.Button({
         content : 'Primary Action',
-        className : 'light_blue',
+        className : 'light_blue'
       }).render();
       document.getElementById("light_blue").appendChild(lightBlueButton.el);
 
       var lightBlueLink = new Backbone.UI.Link({
         content : 'Secondary Action',
-        className : 'light_blue',
+        className : 'light_blue'
       }).render();
       document.getElementById("light_blue").appendChild(lightBlueLink.el);
 
@@ -161,14 +202,14 @@
       document.getElementById("white").appendChild(defaultButton.el);
 
       var defaultLink = new Backbone.UI.Link({
-        content : 'Secondary Action',
+        content : 'Secondary Action'
       }).render();
       document.getElementById("white").appendChild(defaultLink.el);
     });
   </script>
 </head>
 
-<body>
+<body class="skin_perka">
   <table>
     <tbody>
       <tr>
