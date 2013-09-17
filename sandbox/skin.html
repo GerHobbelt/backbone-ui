@@ -13,6 +13,7 @@
   <script src="../lib/required/4_laconic.js"></script>
   <script src='../lib/optional/jquery-mousewheel-3.0.6.js'></script>
   <script src='../lib/optional/moment-2.0.0.js'></script>
+  <script src='../lib/optional/formation.js'></script>
   <script src='../src/js/backbone_ui.js'></script>
   <script src='../src/js/has_alternative_property.js'></script>
   <script src='../src/js/has_model.js'></script>
@@ -84,11 +85,6 @@
       width:50px;
     }
 
-    section > div,
-    td > div {
-      margin-bottom:30px;
-    }
-
   </style>
 
   <script type="text/javascript">
@@ -113,9 +109,9 @@
           glyphPadding : 8
         }).render();
 
-        var stack = $.el.flow(largeGreenButton.el,largeLink.el);
+        var stack = $.el.stack($.el.flow({padding:'40px'},largeGreenButton.el,largeLink.el));
 
-        //document.getElementById("44_b").appendChild(stack);
+        document.getElementById("44_b").appendChild(stack);
 
         //-----------------------medium button-----------------------//
         var defaultButton = new Backbone.UI.Button({
@@ -125,22 +121,31 @@
         var defaultLink = new Backbone.UI.Link({
           content : 'Secondary action'
         }).render();
-        document.getElementById("36_b").appendChild($.el.div(defaultButton.el,defaultLink.el));
+        var buttonFlow = $.el.flow({padding:'30px'},defaultButton.el,defaultLink.el);
 
         var defaultGlyphButton = new Backbone.UI.Button({
-          content : 'Primary action'
+          content : 'Primary glyph',
+          glyphCss : 'url(plus.png) 0 0 no-repeat',
+          glyphSize : 20,
+          glyphPadding : 8
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Link({
-          content : 'Secondary action'
+          content : 'Secondary with glyph'
         }).render();
-        document.getElementById("36_b").appendChild($.el.div(defaultGlyphButton.el,defaultGlyphLink.el));
+        var glyphButtonFlow = $.el.flow({padding:'30px'},defaultGlyphButton.el,defaultGlyphLink.el);
 
         var disabledButton = new Backbone.UI.Button({
           content : 'Disabled State',
           disabled : true
         }).render();
-        document.getElementById("36_b").appendChild($.el.div(disabledButton.el));
+
+        var stack = $.el.stack({padding: '30px'},
+          buttonFlow,
+          glyphButtonFlow,
+          disabledButton.el);
+
+        document.getElementById("36_b").appendChild(stack);
 
         //-----------------------small button-----------------------//
         var smallButton = new Backbone.UI.Button({
