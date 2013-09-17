@@ -27,7 +27,6 @@
   <script src='../src/js/menu.js'></script>
   <script src='../src/js/pulldown.js'></script>
   <script src='../src/js/radio_group.js'></script>
-  <script src='../src/js/scroller.js'></script>
   <script src='../src/js/tab_set.js'></script>
   <script src='../src/js/table_view.js'></script>
   <script src='../src/js/text_area.js'></script>
@@ -43,7 +42,6 @@
   <link rel='stylesheet' type='text/css' href='../src/css/list.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/menu.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/radio_group.css'>
-  <link rel='stylesheet' type='text/css' href='../src/css/scroller.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/tab_set.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/table_view.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/text_area.css'>
@@ -55,6 +53,37 @@
     $(window).ready(function() {
       Backbone.UI.setSkin('perka');
 
+      var model = new Backbone.Model();
+
+      var menuItems = new Backbone.Collection([
+        {label : 'United States', value : 'USA'},
+        {label : 'Australia', value : 'AUS'},
+        {label : 'Canada', value : 'CAN'},
+        {label : 'Cayman Islands', value : 'CAY'},
+        {label : 'Ireland', value : 'IRE'},
+        {label : 'Mexico', value : 'MEX'},
+        {label : 'Nigeria', value : 'NG'},
+        {label : 'Panama', value : 'PAN'},
+        {label : 'Puerto Rico', value : 'PR'},
+        {label : 'South Africa', value : 'SA'},
+        {label : 'Uganda', value : 'UG'},
+        {label : 'United Kingdom', value : 'UK'}
+      ]);
+
+      var menu = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        //altValueContent : 'value',
+        size : 5
+      }).render();
+      
+      document.body.appendChild(menu.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
       var button = new Backbone.UI.Button({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
@@ -89,10 +118,11 @@
         {label : 'three', glyphRightCss : 'url(time_date.png) 0 2px no-repeat'}];
 
       var pulldown = new Backbone.UI.Pulldown({
-        alternatives : items,
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
         altLabelContent : 'label',
-        altGlyphCss : 'glyphCss',
-        altGlyphRightCss : 'glyphRightCss',
+        //altValueContent : 'value',
         glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat'
       }).render();
       document.body.appendChild(pulldown.el);
