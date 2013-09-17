@@ -134,17 +134,24 @@
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
         content : 'text time',
-        formLabel : 'First Name'
+        formLabelContent : 'First Name'
       }).render();
       document.body.appendChild(field.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
+
+      var textModel = new Backbone.Model({
+        ccType : 'Visa',
+        ccTypeLabel : 'Credit Card Type'
+      });
+
       field = new Backbone.UI.TextField({
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time',
-        formLabel : 'Last Name'
+        model : textModel,
+        content : 'ccType',
+        formLabelContent : 'ccTypeLabel'
       }).render();
       document.body.appendChild(field.el);
       $.el.br().appendTo(document.body);
