@@ -60,7 +60,7 @@
     table {
       border-spacing:0;
       border: 1px solid #7c7c7c;
-      width:1798px;
+      width:2098px;
     }
 
     table th {
@@ -73,7 +73,7 @@
       border: 1px solid #7c7c7c;
       padding: 3px;
       vertical-align:top;
-      width: 500px;
+      width: 600px;
       background-position: center;
       background-repeat: no-repeat;
       border: 1px solid #dadada;
@@ -175,7 +175,7 @@
 
         document.getElementById("32_b").appendChild($.el.stack({padding:'30px'},smallButton.el,smallGlyphButton.el));
 
-        //-----------------------text fields-----------------------------//   
+        //-----------------------large text fields-----------------------------//   
         var largeTextField = new Backbone.UI.TextField({
           className : 'large',
           formLabelContent : 'Large Text Field',
@@ -189,6 +189,58 @@
         }).render();  
 
         document.getElementById("44_tf").appendChild($.el.stack({padding:'30px'},largeTextField.el,secondLargeTextField.el)); 
+
+        //-----------------------default text fields-----------------------------//  
+
+        var defaultTextField = new Backbone.UI.TextField({
+          formLabelContent : 'Form field label',
+          placeholder : 'Default text'
+        }).render();   
+
+        var defaultActiveTextField = new Backbone.UI.TextField({
+          formLabelContent : 'Active form field',
+          content : 'User input',
+        }).render();  
+
+        var defaultErrorTextField = new Backbone.UI.TextField({
+          formLabelContent : 'Form field error',
+          content : 'User input',
+          className : 'error'
+        }).render(); 
+
+        document.getElementById("36_tf").appendChild($.el.stack({padding:'30px'},
+          defaultTextField.el,
+          defaultActiveTextField.el,
+          $.el.stack(defaultErrorTextField.el,$.el.div($.el.span({padding:'30px',className:'error_message'},'Error message'))))); 
+
+        //-----------------------small text fields-----------------------------//  
+
+        var smallTextField = new Backbone.UI.TextField({
+          className: 'small',
+          formLabelContent : 'Text label',
+          placeholder : 'Default text'
+        }).render();   
+
+        var smallActiveTextField = new Backbone.UI.TextField({
+          className: 'small',
+          formLabelContent : 'Text label',
+          content : 'Active inline field',
+          glyphRightCss : 'url(enter.png) 0 0 no-repeat',
+          glyphSize : 20,
+          glyphPadding : 8,
+        }).render();  
+
+        var smallPlaceholderTextField = new Backbone.UI.TextField({
+          className: 'small',
+          placeholder : 'Inline field with glyph',
+          glyphCss : 'url(search.png) 0 0 no-repeat',
+          glyphSize : 20,
+          glyphPadding : 8,
+        }).render(); 
+
+        document.getElementById("32_tf").appendChild($.el.stack({padding:'30px'},
+          $.el.flow(smallTextField.el,smallPlaceholderTextField.el),
+          smallActiveTextField.el)) 
 
         //-----------------------buttons-----------------------------//
         var orangeButton = new Backbone.UI.Button({
