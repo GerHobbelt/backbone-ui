@@ -85,6 +85,10 @@
       width:50px;
     }
 
+    .buttons > div {
+      margin-bottom:30px;
+    }
+
   </style>
 
   <script type="text/javascript">
@@ -131,7 +135,10 @@
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Link({
-          content : 'Secondary with glyph'
+          content : 'Secondary with glyph',
+          glyphCss : 'url(pencil.png) 0 0 no-repeat',
+          glyphSize : 20,
+          glyphPadding : 8
         }).render();
         var glyphButtonFlow = $.el.flow({padding:'30px'},defaultGlyphButton.el,defaultGlyphLink.el);
 
@@ -153,73 +160,69 @@
           className : 'small'
         }).render();
 
-        document.getElementById("32_b").appendChild($.el.div(smallButton.el));
-
         var smallGlyphButton = new Backbone.UI.Button({
           content : 'With glyph',
-          className : 'small'
+          className : 'small',
+          glyphCss : 'url(plus.png) 0 0 no-repeat',
+          glyphSize : 20,
+          glyphPadding : 8
         }).render();
 
-        document.getElementById("32_b").appendChild($.el.div(smallGlyphButton.el));
+        document.getElementById("32_b").appendChild($.el.stack({padding:'30px'},smallButton.el,smallGlyphButton.el));
 
         //-----------------------buttons-----------------------------//
         var orangeButton = new Backbone.UI.Button({
           content : 'Primary Action',
           className : 'orange'
         }).render();
-        document.getElementById("orange").appendChild(orangeButton.el);
 
         var orangeLink = new Backbone.UI.Link({
           content : 'Secondary Action',
           className : 'orange'
         }).render();
-        document.getElementById("orange").appendChild(orangeLink.el);
+        document.getElementById("orange").appendChild($.el.flow({padding:'30px'},orangeButton.el,orangeLink.el));
 
         var blueButton = new Backbone.UI.Button({
           content : 'Primary Action',
           className : 'blue'
         }).render();
-        document.getElementById("blue").appendChild(blueButton.el);
 
         var blueLink = new Backbone.UI.Link({
           content : 'Secondary Action',
           className : 'blue'
         }).render();
-        document.getElementById("blue").appendChild(blueLink.el);
+        document.getElementById("blue").appendChild($.el.flow({padding:'30px'},blueButton.el,blueLink.el));
 
         var greenButton = new Backbone.UI.Button({
           content : 'Primary Action',
           className : 'green'
         }).render();
-        document.getElementById("green").appendChild(greenButton.el);
 
         var greenLink = new Backbone.UI.Link({
           content : 'Secondary Action',
           className : 'green'
         }).render();
-        document.getElementById("green").appendChild(greenLink.el);
+        document.getElementById("green").appendChild($.el.flow({padding:'30px'},greenButton.el,greenLink.el));
 
         var lightBlueButton = new Backbone.UI.Button({
           content : 'Primary Action',
           className : 'light_blue'
         }).render();
-        document.getElementById("light_blue").appendChild(lightBlueButton.el);
 
         var lightBlueLink = new Backbone.UI.Link({
           content : 'Secondary Action',
           className : 'light_blue'
         }).render();
-        document.getElementById("light_blue").appendChild(lightBlueLink.el);
+        document.getElementById("light_blue").appendChild($.el.flow({padding:'30px'},lightBlueButton.el,lightBlueLink.el));
 
         var defaultButton = new Backbone.UI.Button({
           content : 'Primary Action'
         }).render();
-        document.getElementById("white").appendChild(defaultButton.el);
 
         var defaultLink = new Backbone.UI.Link({
           content : 'Secondary Action'
         }).render();
-        document.getElementById("white").appendChild(defaultLink.el);
+        document.getElementById("white").appendChild($.el.flow({padding:'30px'},defaultButton.el,defaultLink.el));
       });
     })();
   </script>
@@ -254,7 +257,7 @@
       </tr>
     </tbody>
   </table>
-  <section>
+  <section class="buttons">
     <h2>Buttons</h2>
     <div id="orange"></div>
     <div id="blue"></div>
