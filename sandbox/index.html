@@ -53,7 +53,9 @@
     $(window).ready(function() {
       Backbone.UI.setSkin('perka');
 
-      var model = new Backbone.Model();
+      var model = new Backbone.Model({
+        countryFormLabel : 'Country of Birth'
+      });
 
       var menuItems = new Backbone.Collection([
         {label : 'United States', value : 'USA'},
@@ -76,7 +78,8 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        size : 5
+        size : 5,
+        formLabelContent : 'countryFormLabel'
       }).render();
       
       document.body.appendChild(menu.el);
@@ -123,7 +126,8 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat'
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'countryFormLabel'
       }).render();
       document.body.appendChild(pulldown.el);
       $.el.br().appendTo(document.body);
@@ -163,6 +167,15 @@
         content : 'text time'
       }).render();
       document.body.appendChild(field.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      var area = new Backbone.UI.TextArea({
+        content : 'text time',
+        formLabelContent : 'Describe your problem'
+      }).render();
+      document.body.appendChild(area.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
@@ -228,7 +241,8 @@
         altLabelContent : 'label',
         altGlyphCss : 'glyphCss',
         altGlyphRightCss : 'glyphRightCss',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat'
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'How many fingers am I holding up?'
       }).render();
       document.body.appendChild(group.el);
       $.el.br().appendTo(document.body);
@@ -236,7 +250,8 @@
       $.el.br().appendTo(document.body);
 
       var picker = new Backbone.UI.DatePicker({
-        glyphRightCss : 'url(time_date.png) 0 2px no-repeat'
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        formLabelContent : 'Your Birthday'
       }).render();
       document.body.appendChild(picker.el);
       $.el.br().appendTo(document.body);
@@ -244,7 +259,8 @@
       $.el.br().appendTo(document.body);
 
       picker = new Backbone.UI.TimePicker({
-        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat'
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        formLabelContent : 'Set Alarm'
       }).render();
       document.body.appendChild(picker.el);
       $.el.br().appendTo(document.body);
