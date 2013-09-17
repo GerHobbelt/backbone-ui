@@ -102,7 +102,8 @@
           className : 'large green',
           glyphCss : 'url(check.png) 0 0 no-repeat',
           glyphSize : 28,
-          glyphPadding : 8
+          glyphPadding : 8,
+          glyphBackgroundSize : 'contain'
         }).render();
 
         var largeLink = new Backbone.UI.Link({
@@ -110,7 +111,8 @@
           className : 'large',
           glyphCss : 'url(pencil.png) 0 0 no-repeat',
           glyphSize : 28,
-          glyphPadding : 8
+          glyphPadding : 8,
+          glyphBackgroundSize : 'contain'
         }).render();
 
         var stack = $.el.stack($.el.flow({padding:'40px'},largeGreenButton.el,largeLink.el));
@@ -131,14 +133,16 @@
           content : 'Primary glyph',
           glyphCss : 'url(plus.png) 0 0 no-repeat',
           glyphSize : 20,
-          glyphPadding : 8
+          glyphPadding : 8,
+          glyphBackgroundSize : 'contain'
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Link({
           content : 'Secondary with glyph',
           glyphCss : 'url(pencil.png) 0 0 no-repeat',
           glyphSize : 20,
-          glyphPadding : 8
+          glyphPadding : 8,
+          glyphBackgroundSize : 'contain'
         }).render();
         var glyphButtonFlow = $.el.flow({padding:'30px'},defaultGlyphButton.el,defaultGlyphLink.el);
 
@@ -165,7 +169,8 @@
           className : 'small',
           glyphCss : 'url(plus.png) 0 0 no-repeat',
           glyphSize : 20,
-          glyphPadding : 8
+          glyphPadding : 8,
+          glyphBackgroundSize : 'contain'
         }).render();
 
         document.getElementById("32_b").appendChild($.el.stack({padding:'30px'},smallButton.el,smallGlyphButton.el));
