@@ -12,8 +12,9 @@
   <script src='../src/js/backbone_ui.js'></script>
   <script src='../src/js/has_alternative_property.js'></script>
   <script src='../src/js/has_model.js'></script>
-  <script src='../src/js/has_glyph.js'></script>
+  <script src='../src/js/has_error.js'></script>
   <script src='../src/js/has_form_label.js'></script>
+  <script src='../src/js/has_glyph.js'></script>
   <script src='../src/js/drag_session.js'></script>
 
   <script src='../src/js/button.js'></script>
@@ -72,7 +73,7 @@
         {label : 'United Kingdom', value : 'UK'}
       ]);
 
-      var menu = new Backbone.UI.Menu({
+      window.menu = new Backbone.UI.Menu({
         model : model,
         content : 'country',
         alternatives : menuItems,
@@ -86,6 +87,8 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+      
+      menu.setError(true, 'You must select a country');
       
       var button = new Backbone.UI.Button({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
@@ -120,7 +123,7 @@
         {label : 'two', glyphCss : 'url(time_date.png) 0 -24px no-repeat'}, 
         {label : 'three', glyphRightCss : 'url(time_date.png) 0 2px no-repeat'}];
 
-      var pulldown = new Backbone.UI.Pulldown({
+      window.pulldown = new Backbone.UI.Pulldown({
         model : model,
         content : 'country',
         alternatives : menuItems,
@@ -134,24 +137,28 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      var field = new Backbone.UI.TextField({
+      pulldown.setError(true, 'You must select a something!');
+
+
+      window.firstName = new Backbone.UI.TextField({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
         content : 'text time',
         formLabelContent : 'First Name'
       }).render();
-      document.body.appendChild(field.el);
+      document.body.appendChild(firstName.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
-
+      
+      firstName.setError(true, 'Is this really your first name?');
 
       var textModel = new Backbone.Model({
         ccType : 'Visa',
         ccTypeLabel : 'Credit Card Type'
       });
 
-      field = new Backbone.UI.TextField({
+      var field = new Backbone.UI.TextField({
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
         model : textModel,
         content : 'ccType',
@@ -171,7 +178,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      var area = new Backbone.UI.TextArea({
+      window.area = new Backbone.UI.TextArea({
         content : 'text time',
         formLabelContent : 'Describe your problem'
       }).render();
@@ -179,6 +186,8 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+
+      area.setError(true, "Not a good description!");
 
       var link = new Backbone.UI.Link({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
@@ -208,16 +217,18 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      var checkbox = new Backbone.UI.Checkbox({
+      window.check = new Backbone.UI.Checkbox({
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         content : 'check me'
       }).render();
-      document.body.appendChild(checkbox.el);
+      document.body.appendChild(check.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      checkbox = new Backbone.UI.Checkbox({
+      check.setError(true, "check it yo!");
+      
+      var checkbox = new Backbone.UI.Checkbox({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         content : 'check me'
       }).render();
@@ -236,7 +247,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      var group = new Backbone.UI.RadioGroup({
+      window.group = new Backbone.UI.RadioGroup({
         alternatives : items,
         altLabelContent : 'label',
         altGlyphCss : 'glyphCss',
@@ -248,24 +259,32 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+      
+      group.setError(true, "Pick one please.");
 
-      var picker = new Backbone.UI.DatePicker({
+      window.datepicker = new Backbone.UI.DatePicker({
         glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
         formLabelContent : 'Your Birthday'
       }).render();
-      document.body.appendChild(picker.el);
+      document.body.appendChild(datepicker.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
-
-      picker = new Backbone.UI.TimePicker({
+      
+      datepicker.setError(true, "Are you sure?");
+      
+      
+      window.timepicker = new Backbone.UI.TimePicker({
         glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
         formLabelContent : 'Set Alarm'
       }).render();
-      document.body.appendChild(picker.el);
+      document.body.appendChild(timepicker.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+      
+      timepicker.setError(true, "You can't sleep that day.");
+      
     });
 
   </script>
