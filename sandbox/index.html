@@ -50,6 +50,52 @@
   <link rel='stylesheet' type='text/css' href='../src/css/time_picker.css'>
   <link rel='stylesheet' type='text/css' href='../doc/src/skins/perka/perka.css'>
 
+  <style>
+    
+    .error .error_message.with_disclosure {
+      cursor: pointer;
+    }
+  
+    .disclosure {
+      position:absolute;
+      z-index:3000;
+    }
+
+    .disclosure .disclosure_outer {
+      padding:10px 0 0 0;
+    }
+
+    .disclosure .disclosure_outer.arrow_down {
+      padding:0 0 10px 0;
+    }
+
+    .disclosure .disclosure_inner {
+      -webkit-box-shadow: 0 0 10px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    0 0 10px rgba(50, 50, 50, 0.75);
+      box-shadow:         0 0 10px rgba(50, 50, 50, 0.75);
+    }
+
+    .disclosure .disclosure_inner {
+      padding:20px;
+      background-color: #eee;
+      width:340px;
+      font-size:15px;
+    }
+
+    .disclosure .disclosure_outer .disclosure_arrow {
+      position:absolute;
+      width:20px;
+      height:10px;
+      background: url(file:///Users/jack/perka/web-common/images/ui/disclosure_arrows.png) -10px -30px no-repeat;
+    }
+
+    .disclosure .disclosure_outer.arrow_down .disclosure_arrow {
+      background: url(file:///Users/jack/perka/web-common/images/ui/disclosure_arrows.png) -10px 0 no-repeat;
+    }
+    
+  </style>
+  
+
   <script type="text/javascript">
     $(window).ready(function() {
       Backbone.UI.setSkin('perka');
@@ -144,7 +190,8 @@
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
         content : 'text time',
-        formLabelContent : 'First Name'
+        formLabelContent : 'First Name',
+        errorPosition : 'disclosure'
       }).render();
       document.body.appendChild(firstName.el);
       $.el.br().appendTo(document.body);
@@ -219,7 +266,8 @@
 
       window.check = new Backbone.UI.Checkbox({
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
-        content : 'check me'
+        content : 'check me',
+        errorPosition : 'right'
       }).render();
       document.body.appendChild(check.el);
       $.el.br().appendTo(document.body);
