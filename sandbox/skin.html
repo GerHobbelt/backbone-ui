@@ -242,6 +242,53 @@
           $.el.flow(smallTextField.el,smallPlaceholderTextField.el),
           smallActiveTextField.el)) 
 
+        //--------------------selection elements---------------------//
+
+        var menuItems = new Backbone.Collection([
+          {label : 'United States', value : 'USA'},
+          {label : 'Australia', value : 'AUS'},
+          {label : 'Canada', value : 'CAN'},
+          {label : 'Cayman Islands', value : 'CAY'},
+          {label : 'Ireland', value : 'IRE'},
+          {label : 'Mexico', value : 'MEX'},
+          {label : 'Nigeria', value : 'NG'},
+          {label : 'Panama', value : 'PAN'},
+          {label : 'Puerto Rico', value : 'PR'},
+          {label : 'South Africa', value : 'SA'},
+          {label : 'Uganda', value : 'UG'},
+          {label : 'United Kingdom', value : 'UK'}
+        ]);
+
+        var items = [
+          {label : 'Radio on'}, 
+          {label : 'Radio off'}];
+
+        var pulldown = new Backbone.UI.Pulldown({
+          content : 'country',
+          alternatives : menuItems,
+          altLabelContent : 'label',
+          altValueContent : 'value'
+        }).render();
+
+        var radioGroup = new Backbone.UI.RadioGroup({
+          alternatives : items,
+          altLabelContent : 'label',
+        }).render();
+
+        var checkboxOn = new Backbone.UI.Checkbox({
+          content : 'Checkbox on'
+        }).render();
+
+        var checkboxOff = new Backbone.UI.Checkbox({
+          content : 'Checkbox off'
+        }).render();
+
+        var checkboxStack = $.el.stack(checkboxOn.el,checkboxOff.el);
+        var flow = $.el.flow({padding:'50px'},radioGroup.el,checkboxStack);
+
+        document.getElementById("36_se").appendChild($.el.stack({padding:'50px'},pulldown.el,flow));
+
+
         //-----------------------buttons-----------------------------//
         var orangeButton = new Backbone.UI.Button({
           content : 'Primary Action',
