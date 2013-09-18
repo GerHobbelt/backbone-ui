@@ -269,6 +269,12 @@
           altValueContent : 'value'
         }).render();
 
+        var operation = new Backbone.UI.Button({
+          content : 'Operation'
+        }).render();
+
+        var pulldownFlow = $.el.flow({padding:'30px'}, pulldown.el, operation.el)
+
         var radioGroup = new Backbone.UI.RadioGroup({
           alternatives : items,
           altLabelContent : 'label',
@@ -285,7 +291,7 @@
         var checkboxStack = $.el.stack(checkboxOn.el,checkboxOff.el);
         var flow = $.el.flow({padding:'50px'},radioGroup.el,checkboxStack);
 
-        document.getElementById("36_se").appendChild($.el.stack({padding:'50px'},pulldown.el,flow));
+        document.getElementById("36_se").appendChild($.el.stack({padding:'50px'},pulldownFlow,flow));
 
 
         //-----------------------buttons-----------------------------//
