@@ -215,13 +215,13 @@
         //-----------------------small text fields-----------------------------//  
 
         var smallTextField = new Backbone.UI.TextField({
-          className: 'small',
+          className: 'small inline',
           formLabelContent : 'Text label',
           placeholder : 'Default text'
         }).render();   
 
         var smallActiveTextField = new Backbone.UI.TextField({
-          className: 'small',
+          className: 'small inline',
           formLabelContent : 'Text label',
           content : 'Active inline field',
           glyphRightCss : 'url(enter.png) 0 0 no-repeat',
@@ -230,7 +230,7 @@
         }).render();  
 
         var smallPlaceholderTextField = new Backbone.UI.TextField({
-          className: 'small',
+          className: 'small inline',
           placeholder : 'Inline field with glyph',
           glyphCss : 'url(search.png) 0 0 no-repeat',
           glyphSize : 20,
@@ -276,6 +276,7 @@
         var pulldownFlow = $.el.flow({padding:'30px'}, pulldown.el, operation.el)
 
         var radioGroup = new Backbone.UI.RadioGroup({
+          className : 'block',
           alternatives : items,
           altLabelContent : 'label',
         }).render();
