@@ -53,6 +53,11 @@
 
   <style>
     
+    body {
+      width: 600px;
+      margin: 0 auto;
+    }
+    
     .error .error_message.with_disclosure {
       cursor: pointer;
     }
@@ -119,8 +124,15 @@
         {label : 'Uganda', value : 'UG'},
         {label : 'United Kingdom', value : 'UK'}
       ]);
-
-      window.menu = new Backbone.UI.Menu({
+      
+      document.body.appendChild($.el.h2('Menu examples:'));
+      
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: none
+       */
+      window.menu1 = new Backbone.UI.Menu({
         model : model,
         content : 'country',
         alternatives : menuItems,
@@ -130,13 +142,107 @@
         formLabelContent : 'countryFormLabel'
       }).render();
       
-      document.body.appendChild(menu.el);
+      document.body.appendChild(menu1.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      menu.setError(true, 'You must select a country');
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: inform / right
+       */
+      window.menu2 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
       
+      document.body.appendChild(menu2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu2.setError('You must select a country');
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: inform / below
+       */
+      window.menu3 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      
+      document.body.appendChild(menu3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu3.setError('You must select a country');
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: disclosure / right
+       */
+      window.menu4 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      
+      document.body.appendChild(menu4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu4.setError('You must select a country');
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: disclosure / below
+       */
+      window.menu5 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      
+      document.body.appendChild(menu5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu5.setError('You must select a country');
+      
+      
+      
+      
+        
       var button = new Backbone.UI.Button({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
@@ -184,22 +290,29 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      pulldown.setError(true, 'You must select a something!');
+      pulldown.setError('You must select a something!');
+
+      
+      var user = new Backbone.Model({
+        firstName : 'Jack',
+        lastName : 'Carrig'
+      });
 
 
       window.firstName = new Backbone.UI.TextField({
+        model : user,
+        content : 'firstName',
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
         glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time',
         formLabelContent : 'First Name',
-        errorPosition : 'disclosure'
+        errorType : 'disclosure'
       }).render();
       document.body.appendChild(firstName.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      firstName.setError(true, 'Is this really your first name?');
+      firstName.setError('Is this really your first name?');
 
       var textModel = new Backbone.Model({
         ccType : 'Visa',
@@ -235,7 +348,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
 
-      area.setError(true, "Not a good description!");
+      area.setError("Not a good description!");
 
       var link = new Backbone.UI.Link({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
@@ -275,7 +388,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      check.setError(true, "check it yo!");
+      check.setError("check it yo!");
       
       var checkbox = new Backbone.UI.Checkbox({
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
@@ -309,7 +422,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      group.setError(true, "Pick one please.");
+      group.setError("Pick one please.");
 
       window.datepicker = new Backbone.UI.DatePicker({
         glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
@@ -320,7 +433,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      datepicker.setError(true, "Are you sure?");
+      datepicker.setError("Are you sure?");
       
       
       window.timepicker = new Backbone.UI.TimePicker({
@@ -332,7 +445,7 @@
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       
-      timepicker.setError(true, "You can't sleep that day.");
+      timepicker.setError("You can't sleep that day.");
       
     });
 
