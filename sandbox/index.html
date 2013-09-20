@@ -116,6 +116,20 @@
 
   <script type="text/javascript">
     $(window).ready(function() {
+      
+      
+      
+      // var obj = $.el.object({data : 'checkmark.svg', width : '100px', height : '100px'});
+      //       
+      //       obj.addEventListener('load', function() { 
+      //         var svgDoc = obj.contentDocument;
+      //         $(svgDoc).find('path').attr({fill : 'pink'});
+      //       }, false);
+      //       
+      //       document.body.appendChild(obj);
+      
+      
+      
       Backbone.UI.setSkin('perka');
 
       var model = new Backbone.Model({
@@ -560,8 +574,8 @@
       document.body.appendChild($.el.h2('Checkbox examples:'));
       
       var checkModel = new Backbone.Model({
-        val : 'I agree to terms',
-        
+        val : false,
+        label : 'I agree to terms'  
       });
       
       /* 
@@ -571,6 +585,7 @@
       window.check1 = new Backbone.UI.Checkbox({
         model : checkModel,
         content : 'val',
+        labelContent : 'label',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         errorType : 'inform',
         errorPosition : 'right'
@@ -587,6 +602,7 @@
       window.check3 = new Backbone.UI.Checkbox({
         model : checkModel,
         content : 'val',
+        labelContent : 'label',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         errorType : 'inform',
         errorPosition : 'below'
@@ -605,6 +621,7 @@
       window.check5 = new Backbone.UI.Checkbox({
         model : checkModel,
         content : 'val',
+        labelContent : 'label',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         errorType : 'inform',
         errorPosition : 'right'
@@ -623,6 +640,7 @@
       window.check2 = new Backbone.UI.Checkbox({
         model : checkModel,
         content : 'val',
+        labelContent : 'label',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         errorType : 'disclosure',
         errorPosition : 'below'
@@ -641,6 +659,7 @@
       window.check4 = new Backbone.UI.Checkbox({
         model : checkModel,
         content : 'val',
+        labelContent : 'label',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         errorType : 'disclosure',
         errorPosition : 'right'
