@@ -55,7 +55,6 @@
   <link rel='stylesheet' type='text/css' href='../src/css/text_field.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/time_picker.css'>
   <link rel='stylesheet' type='text/css' href='../doc/src/skins/perka/perka.css'>
-  <link rel="stylesheet" type="text/css" href="test.css">
 
   <style>
     table {
@@ -189,6 +188,7 @@
           className : 'large',
           formLabelContent : 'Second Large Text Field',
           content : 'User input',
+          disabled : true
         }).render();  
 
         document.getElementById("44_tf").appendChild($.el.stack({padding:'30px'},largeTextField.el,secondLargeTextField.el)); 
@@ -282,7 +282,7 @@
         var radioGroup = new Backbone.UI.RadioGroup({
           className : 'block',
           alternatives : items,
-          altLabelContent : 'label',
+          altLabelContent : 'label'
         }).render();
 
         var checkboxOn = new Backbone.UI.Checkbox({
