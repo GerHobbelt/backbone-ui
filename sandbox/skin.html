@@ -55,6 +55,7 @@
   <link rel='stylesheet' type='text/css' href='../src/css/text_field.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/time_picker.css'>
   <link rel='stylesheet' type='text/css' href='../doc/src/skins/perka/perka.css'>
+  <link rel="stylesheet" type="text/css" href="test.css">
 
   <style>
     table {
@@ -89,6 +90,10 @@
       margin-bottom:30px;
     }
 
+    .checkmark_svg svg path {
+      fill:pink;
+    }
+
   </style>
 
   <script type="text/javascript">
@@ -98,8 +103,8 @@
         //---------------------large button-------------------------//
         var largeGreenButton = new Backbone.UI.Button({
           content : 'Major action',
-          className : 'large green',
-          glyphCss : 'url(check.png) 0 0 no-repeat',
+          className : 'large green pink',
+          glyphCss : 'url(checkmark.svg) 0 0 no-repeat',
           glyphSize : 28,
           glyphPadding : 8,
           glyphBackgroundSize : 'contain'
@@ -130,10 +135,9 @@
 
         var defaultGlyphButton = new Backbone.UI.Button({
           content : 'Primary glyph',
-          glyphCss : 'url(plus.png) 0 0 no-repeat',
+          glyphCss : 'url(checkmark.svg) 0 0 no-repeat',
           glyphSize : 20,
-          glyphPadding : 8,
-          glyphBackgroundSize : 'contain'
+          glyphPadding : 8
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Link({
@@ -353,6 +357,8 @@
 </head>
 
 <body class="skin_perka">
+<object data="checkmark.svg" type="image/svg+xml" style="fill:pink;" width="20" height="20" ></object>
+</svg>
   <table>
     <tbody>
       <tr>
