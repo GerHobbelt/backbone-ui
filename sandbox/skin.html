@@ -187,7 +187,8 @@
         var secondLargeTextField = new Backbone.UI.TextField({
           className : 'large',
           formLabelContent : 'Second Large Text Field',
-          content : 'User input'
+          content : 'User input',
+          disabled : true
         }).render();  
 
         document.getElementById("44_tf").appendChild($.el.stack({padding:'30px'},largeTextField.el,secondLargeTextField.el)); 
