@@ -522,7 +522,7 @@
       
       document.body.appendChild($.el.h2('Checkbox examples:'));
       
-      var checkModel = new Backbone.Model({
+      window.checkModel = new Backbone.Model({
         val : false,
         label : 'I agree to terms'  
       });
@@ -534,7 +534,7 @@
       window.check1 = new Backbone.UI.Checkbox({
         model : checkModel,
         content : 'val',
-        labelContent : 'label',
+        labelContent : 'Hello world',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
         errorType : 'inform',
         errorPosition : 'right'
