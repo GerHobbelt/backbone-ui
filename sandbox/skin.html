@@ -88,10 +88,6 @@
       margin-bottom:30px;
     }
 
-    .checkmark_svg svg path {
-      fill:pink;
-    }
-
   </style>
 
   <script type="text/javascript">
@@ -101,20 +97,18 @@
         //---------------------large button-------------------------//
         var largeGreenButton = new Backbone.UI.Button({
           content : 'Major action',
-          className : 'large green pink',
-          glyphCss : 'url(checkmark.svg) 0 0 no-repeat',
+          className : 'large green',
+          glyphCss : '#fff 0 0 no-repeat',
           glyphSize : 28,
-          glyphPadding : 8,
-          glyphBackgroundSize : 'contain'
+          glyphPadding : 8
         }).render();
 
         var largeLink = new Backbone.UI.Link({
           content : 'Secondary action',
           className : 'large',
-          glyphCss : 'url(pencil.png) 0 0 no-repeat',
+          glyphCss : '#000 0 0 no-repeat',
           glyphSize : 28,
-          glyphPadding : 8,
-          glyphBackgroundSize : 'contain'
+          glyphPadding : 8
         }).render();
 
         var stack = $.el.stack($.el.flow({padding:'40px'},largeGreenButton.el,largeLink.el));
@@ -133,17 +127,16 @@
 
         var defaultGlyphButton = new Backbone.UI.Button({
           content : 'Primary glyph',
-          glyphCss : 'url(checkmark.svg) 0 0 no-repeat',
+          glyphCss : '#000 0 0 no-repeat',
           glyphSize : 20,
           glyphPadding : 8
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Link({
           content : 'Secondary with glyph',
-          glyphCss : 'url(pencil.png) 0 0 no-repeat',
+          glyphCss : '#000 0 0 no-repeat',
           glyphSize : 20,
-          glyphPadding : 8,
-          glyphBackgroundSize : 'contain'
+          glyphPadding : 8
         }).render();
         var glyphButtonFlow = $.el.flow({padding:'30px'},defaultGlyphButton.el,defaultGlyphLink.el);
 
@@ -168,10 +161,9 @@
         var smallGlyphButton = new Backbone.UI.Button({
           content : 'With glyph',
           className : 'small',
-          glyphCss : 'url(plus.png) 0 0 no-repeat',
+          glyphCss : '#000 0 0 no-repeat',
           glyphSize : 20,
-          glyphPadding : 8,
-          glyphBackgroundSize : 'contain'
+          glyphPadding : 8
         }).render();
 
         document.getElementById("32_b").appendChild($.el.stack({padding:'30px'},smallButton.el,smallGlyphButton.el));
@@ -227,7 +219,7 @@
           className: 'small inline',
           formLabelContent : 'Text label',
           content : 'Active inline field',
-          glyphRightCss : 'url(enter.png) 0 0 no-repeat',
+          glyphRightCss : '#000 0 0 no-repeat',
           glyphSize : 20,
           glyphPadding : 8,
         }).render();  
@@ -235,7 +227,7 @@
         var smallPlaceholderTextField = new Backbone.UI.TextField({
           className: 'small inline',
           placeholder : 'Inline field with glyph',
-          glyphCss : 'url(search.png) 0 0 no-repeat',
+          glyphCss : '#000 0 0 no-repeat',
           glyphSize : 20,
           glyphPadding : 8,
         }).render(); 
