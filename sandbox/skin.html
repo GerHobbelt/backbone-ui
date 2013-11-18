@@ -54,6 +54,7 @@
   <link rel='stylesheet' type='text/css' href='../src/css/text_field.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/time_picker.css'>
   <link rel='stylesheet' type='text/css' href='../doc/src/skins/perka/perka.css'>
+  <link rel='stylesheet' type='text/css' href='./styles.css'>
 
   <style>
     table {
@@ -98,17 +99,13 @@
         var largeGreenButton = new Backbone.UI.Button({
           content : 'Major action',
           className : 'large green',
-          glyphCss : '#fff 0 0 no-repeat',
-          glyphSize : 28,
-          glyphPadding : 8
+          glyphLeftClassName : 'icon-plus'
         }).render();
 
         var largeLink = new Backbone.UI.Button({
           content : 'Secondary action',
           className : 'action_link large',
-          glyphCss : '#000 0 0 no-repeat',
-          glyphSize : 28,
-          glyphPadding : 8
+          glyphLeftClassName : 'icon-plus'
         }).render();
 
         var stack = $.el.stack($.el.flow({padding:'40px'},largeGreenButton.el,largeLink.el));
@@ -128,17 +125,13 @@
 
         var defaultGlyphButton = new Backbone.UI.Button({
           content : 'Primary glyph',
-          glyphCss : '#000 0 0 no-repeat',
-          glyphSize : 20,
-          glyphPadding : 8
+          glyphLeftClassName : 'icon-plus'
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Button({
           className : 'action_link',
           content : 'Secondary with glyph',
-          glyphCss : '#000 0 0 no-repeat',
-          glyphSize : 20,
-          glyphPadding : 8
+          glyphLeftClassName : 'icon-plus'
         }).render();
         var glyphButtonFlow = $.el.flow({padding:'30px'},defaultGlyphButton.el,defaultGlyphLink.el);
 
@@ -163,9 +156,7 @@
         var smallGlyphButton = new Backbone.UI.Button({
           content : 'With glyph',
           className : 'small',
-          glyphCss : '#000 0 0 no-repeat',
-          glyphSize : 20,
-          glyphPadding : 8
+          glyphLeftClassName : 'icon-plus'
         }).render();
 
         document.getElementById("32_b").appendChild($.el.stack({padding:'30px'},smallButton.el,smallGlyphButton.el));
@@ -174,7 +165,8 @@
         var largeTextField = new Backbone.UI.TextField({
           className : 'large',
           formLabelContent : 'Large Text Field',
-          placeholder : 'Default text'
+          placeholder : 'Default text',
+          glyphLeftClassName : 'icon-plus'
         }).render();   
 
         var secondLargeTextField = new Backbone.UI.TextField({
@@ -195,6 +187,7 @@
 
         var defaultActiveTextField = new Backbone.UI.TextField({
           formLabelContent : 'Active form field',
+          glyphLeftClassName : 'icon-plus',
           content : 'User input',
         }).render();  
 
@@ -221,17 +214,13 @@
           className: 'small inline',
           formLabelContent : 'Text label',
           content : 'Active inline field',
-          glyphRightCss : '#000 0 0 no-repeat',
-          glyphSize : 20,
-          glyphPadding : 8,
+          glyphRightClassName : 'icon-close'
         }).render();  
 
         var smallPlaceholderTextField = new Backbone.UI.TextField({
           className: 'small inline',
           placeholder : 'Inline field with glyph',
-          glyphCss : '#000 0 0 no-repeat',
-          glyphSize : 20,
-          glyphPadding : 8,
+          glyphLeftClassName : 'icon-plus'
         }).render(); 
 
         document.getElementById("32_tf").appendChild($.el.stack({padding:'30px'},
