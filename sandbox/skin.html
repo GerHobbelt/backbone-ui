@@ -105,7 +105,7 @@
 
         var largeLink = new Backbone.UI.Button({
           content : 'Secondary action',
-          className : 'action_link large',
+          className : 'secondary large',
           glyphCss : '#000 0 0 no-repeat',
           glyphSize : 28,
           glyphPadding : 8
@@ -121,7 +121,7 @@
         }).render();
 
         var defaultLink = new Backbone.UI.Button({
-          className : 'action_link',
+          className : 'secondary',
           content : 'Secondary action'
         }).render();
         var buttonFlow = $.el.flow({padding:'30px'},defaultButton.el,defaultLink.el);
@@ -134,7 +134,7 @@
         }).render();
 
         var defaultGlyphLink = new Backbone.UI.Button({
-          className : 'action_link',
+          className : 'secondary',
           content : 'Secondary with glyph',
           glyphCss : '#000 0 0 no-repeat',
           glyphSize : 20,
@@ -300,7 +300,7 @@
 
         var orangeLink = new Backbone.UI.Button({
           content : 'Secondary Action',
-          className : 'action_link orange'
+          className : 'secondary orange'
         }).render();
         document.getElementById("orange").appendChild($.el.flow({padding:'30px'},orangeButton.el,orangeLink.el));
 
@@ -311,7 +311,7 @@
 
         var blueLink = new Backbone.UI.Button({
           content : 'Secondary Action',
-          className : 'action_link blue'
+          className : 'secondary blue'
         }).render();
         document.getElementById("blue").appendChild($.el.flow({padding:'30px'},blueButton.el,blueLink.el));
 
@@ -322,7 +322,7 @@
 
         var greenLink = new Backbone.UI.Button({
           content : 'Secondary Action',
-          className : 'action_link green'
+          className : 'secondary green'
         }).render();
         document.getElementById("green").appendChild($.el.flow({padding:'30px'},greenButton.el,greenLink.el));
 
@@ -333,7 +333,7 @@
 
         var lightBlueLink = new Backbone.UI.Button({
           content : 'Secondary Action',
-          className : 'action_link light_blue'
+          className : 'secondary light_blue'
         }).render();
         document.getElementById("light_blue").appendChild($.el.flow({padding:'30px'},lightBlueButton.el,lightBlueLink.el));
 
@@ -342,7 +342,7 @@
         }).render();
 
         var defaultLink = new Backbone.UI.Button({
-          className : 'action_link',
+          className : 'secondary',
           content : 'Secondary Action'
         }).render();
         document.getElementById("white").appendChild($.el.flow({padding:'30px'},defaultButton.el,defaultLink.el));
