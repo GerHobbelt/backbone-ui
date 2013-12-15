@@ -1,21 +1,17 @@
+.time_picker {
+  position:relative;
+  line-height:20px;
+}
+
 .time_picker .text_field {
-  width:80px;
+  display:inline-block;
 }
 
-.time_picker .text_field.has_glyph, 
-.time_picker .text_field.has_glyph_right {
-  width:110px;
+.time_picker .text_field input {
+  width: 80px;
 }
 
-.time_picker .text_field.has_glyph.has_glyph_right {
-  width:130px;
-}
-
-.time_picker .menu li {
-  background-color:#fff;
-}
-
-.menu {
-  z-index:1000;
+.time_picker_menu {
+  z-index:2000;
 }
 
