@@ -7,7 +7,7 @@ $(document).ready(function() {
       content : 'foo',
     }).render();
 
-    var text = $(link.el).find('.label').text();
+    var text = $(link.el).find('span').text();
     equal(text, 'foo');
 
   });
@@ -26,7 +26,7 @@ $(document).ready(function() {
     }).render();
 
     // label should be rendered from the 'descripton' property
-    var text = $(link.el).find('.label').text();
+    var text = $(link.el).find('span').text();
     equal(text, 'Counter Culture');
 
     // update our model
@@ -35,7 +35,7 @@ $(document).ready(function() {
     });
 
     // text should have changed
-    text = $(link.el).find('.label').text();
+    text = $(link.el).find('span').text();
     equal(text, 'La Colombe');
 
   });
@@ -84,98 +84,4 @@ $(document).ready(function() {
 
   });
 
-  test("glyphNoBindingLeft", function() {
-    var link = new Backbone.UI.Link({
-      content : 'foo',
-      glyphCss : "url(left.png) top left no-repeat"
-    }).render();
-
-    var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png"?\)$/.test(leftImage));
-
-    ok(!$(link.el).find('.glyph.right')[0]);
-  });
-
-  test("glyphNoBindingRight", function() {
-    var link = new Backbone.UI.Link({
-      content : 'foo',
-      glyphRightCss : "url(right.png) top left no-repeat"
-    }).render();
-
-    var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png"?\)$/.test(rightImage));
-
-    ok(!$(link.el).find('.glyph.left')[0]);
-  });
-
-  test("glyphNoBindingLeftRight", function() {
-    var link = new Backbone.UI.Link({
-      content : 'foo',
-      glyphCss : "url(left.png) top left no-repeat",
-      glyphRightCss : "url(right.png) top left no-repeat"
-    }).render();
-
-    var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png"?\)$/.test(leftImage));
-
-    var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png"?\)$/.test(rightImage));
-  });
-
-  test("glyphBindingLeft", function() {
-    var model = new Backbone.Model({
-      label : 'foo',
-      gl : 'url(left.png) top left no-repeat'
-    });
-
-    var link = new Backbone.UI.Link({
-      model : model,
-      content : 'label',
-      glyphCss : 'gl'
-    }).render();
-
-    var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png"?\)$/.test(leftImage));
-
-    ok(!$(link.el).find('.glyph.right')[0]);
-  });
-
-  test("glyphBindingRight", function() {
-    var model = new Backbone.Model({
-      label : 'foo',
-      gr : 'url(right.png) top left no-repeat'
-    });
-
-    var link = new Backbone.UI.Link({
-      model : model,
-      content : 'label',
-      glyphRightCss : 'gr'
-    }).render();
-
-    var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png"?\)$/.test(rightImage));
-
-    ok(!$(link.el).find('.glyph.left')[0]);
-  });
-
-  test("glyphBindingLeftRight", function() {
-    var model = new Backbone.Model({
-      label : 'foo',
-      gl : 'url(left.png) top left no-repeat',
-      gr : 'url(right.png) top left no-repeat'
-    });
-
-    var link = new Backbone.UI.Link({
-      model : model,
-      content : 'label',
-      glyphCss : 'gl',
-      glyphRightCss : 'gr'
-    }).render();
-
-    var leftImage = $(link.el).find('.glyph.left')[0].style.backgroundImage;
-    ok(/left.png"?\)$/.test(leftImage));
-
-    var rightImage = $(link.el).find('.glyph.right')[0].style.backgroundImage;
-    ok(/right.png"?\)$/.test(rightImage));
-  });
 });

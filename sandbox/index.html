@@ -12,9 +12,11 @@
   <script src='../src/js/backbone_ui.js'></script>
   <script src='../src/js/has_alternative_property.js'></script>
   <script src='../src/js/has_model.js'></script>
+  <script src='../src/js/has_error.js'></script>
+  <script src='../src/js/has_focus.js'></script>
+  <script src='../src/js/has_form_label.js'></script>
   <script src='../src/js/has_glyph.js'></script>
   <script src='../src/js/drag_session.js'></script>
-
   <script src='../src/js/button.js'></script>
   <script src='../src/js/calendar.js'></script>
   <script src='../src/js/checkbox.js'></script>
@@ -26,7 +28,6 @@
   <script src='../src/js/menu.js'></script>
   <script src='../src/js/pulldown.js'></script>
   <script src='../src/js/radio_group.js'></script>
-  <script src='../src/js/scroller.js'></script>
   <script src='../src/js/tab_set.js'></script>
   <script src='../src/js/table_view.js'></script>
   <script src='../src/js/text_area.js'></script>
@@ -34,17 +35,17 @@
   <script src='../src/js/time_picker.js'></script>
   <script src='../src/js/input_event.js'></script>
 
-  <link rel='stylesheet' type='text/css' href='../src/css/button.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/calendar.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/checkbox.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/date_picker.css'>
+  <link rel='stylesheet' type='text/css' href='../src/css/has_error.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/has_glyph.css'>
+  <link rel='stylesheet' type='text/css' href='../src/css/has_form_label.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/link.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/list.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/menu.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/pulldown.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/radio_group.css'>
-  <link rel='stylesheet' type='text/css' href='../src/css/scroller.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/tab_set.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/table_view.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/text_area.css'>
@@ -52,149 +53,961 @@
   <link rel='stylesheet' type='text/css' href='../src/css/time_picker.css'>
   <link rel='stylesheet' type='text/css' href='../doc/src/skins/perka/perka.css'>
 
+  <style>
+    
+    body {
+      width: 600px;
+      margin: 0 auto;
+    }
+    
+  </style>
+  
+
   <script type="text/javascript">
     $(window).ready(function() {
+      
+      
+      
+      // var obj = $.el.object({data : 'checkmark.svg', width : '100px', height : '100px'});
+      //       
+      //       obj.addEventListener('load', function() { 
+      //         var svgDoc = obj.contentDocument;
+      //         $(svgDoc).find('path').attr({fill : 'pink'});
+      //       }, false);
+      //       
+      //       document.body.appendChild(obj);
+      
+      
+      
       Backbone.UI.setSkin('perka');
 
-      var button = new Backbone.UI.Button({
+      var model = new Backbone.Model({
+        countryFormLabel : 'Country of Birth'
+      });
+
+      var menuItems = new Backbone.Collection([
+        {label : 'United States', value : 'USA'},
+        {label : 'Australia', value : 'AUS'},
+        {label : 'Canada', value : 'CAN'},
+        {label : 'Cayman Islands', value : 'CAY'},
+        {label : 'Ireland', value : 'IRE'},
+        {label : 'Mexico', value : 'MEX'},
+        {label : 'Nigeria', value : 'NG'},
+        {label : 'Panama', value : 'PAN'},
+        {label : 'Puerto Rico', value : 'PR'},
+        {label : 'South Africa', value : 'SA'},
+        {label : 'Uganda', value : 'UG'},
+        {label : 'United Kingdom', value : 'UK'}
+      ]);
+      
+      document.body.appendChild($.el.h2('Menu examples:'));
+      
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: none
+       */
+      window.menu1 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel'
+      }).render();
+      
+      document.body.appendChild(menu1.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: inform / right
+       */
+      window.menu2 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
+      
+      document.body.appendChild(menu2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu2.setError('You must select a country');
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: inform / below
+       */
+      window.menu3 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      
+      document.body.appendChild(menu3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu3.setError('You must select a country');
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: disclosure / right
+       */
+      window.menu4 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      
+      document.body.appendChild(menu4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu4.setError('You must select a country');
+      
+      /* 
+       * Component: Backbone.UI.Menu
+       * Errors: disclosure / below
+       */
+      window.menu5 = new Backbone.UI.Menu({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        size : 5,
+        formLabelContent : 'countryFormLabel',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      
+      document.body.appendChild(menu5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      menu5.setError('You must select a country');
+      
+      
+      document.body.appendChild($.el.h2('Pulldown examples:'));
+
+
+      /* 
+       * Component: Backbone.UI.Pulldown
+       * Errors: none
+       */
+      window.pulldown1 = new Backbone.UI.Pulldown({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'countryFormLabel'
+      }).render();
+      document.body.appendChild(pulldown1.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      
+      /* 
+       * Component: Backbone.UI.Pulldown
+       * Errors: inform / right
+       */
+      window.pulldown2 = new Backbone.UI.Pulldown({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'countryFormLabel',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(pulldown2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      pulldown2.setError('You must select a something!');
+      
+      /* 
+       * Component: Backbone.UI.Pulldown
+       * Errors: inform / below
+       */
+      window.pulldown3 = new Backbone.UI.Pulldown({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'countryFormLabel'
+      }).render();
+      document.body.appendChild(pulldown3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      pulldown3.setError('You must select a something!');
+      
+      /* 
+       * Component: Backbone.UI.Pulldown
+       * Errors: disclosure / right
+       */
+      window.pulldown4 = new Backbone.UI.Pulldown({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'countryFormLabel',
+        errorPosition : 'right',
+        errorType : 'disclosure'
+      }).render();
+      document.body.appendChild(pulldown4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      pulldown4.setError('You must select a something!');
+      
+      /* 
+       * Component: Backbone.UI.Pulldown
+       * Errors: disclosure / below
+       */
+      window.pulldown5 = new Backbone.UI.Pulldown({
+        model : model,
+        content : 'country',
+        alternatives : menuItems,
+        altLabelContent : 'label',
+        altValueContent : 'value',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'countryFormLabel',
+        errorType : 'disclosure'
+      }).render();
+      document.body.appendChild(pulldown5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      pulldown5.setError('You must select a something!');
+      
+      
+      document.body.appendChild($.el.h2('Textfield examples:'));
+      
+      var user = new Backbone.Model({
+        firstName : 'Jack',
+        lastName : 'Carrig'
+      });
+
+      /* 
+       * Component: Backbone.UI.TextField
+       * Errors: none
+       */
+      window.firstName1 = new Backbone.UI.TextField({
+        model : user,
+        content : 'firstName',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        formLabelContent : 'First Name'
+      }).render();
+      document.body.appendChild(firstName1.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      /* 
+       * Component: Backbone.UI.TextField
+       * Errors: inform / below
+       */
+      window.firstName2 = new Backbone.UI.TextField({
+        model : user,
+        content : 'firstName',
         glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        formLabelContent : 'First Name',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(firstName2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      firstName2.setError('Is this really your first name?');
+      
+      /* 
+       * Component: Backbone.UI.TextField
+       * Errors: inform / right
+       */
+      window.firstName3 = new Backbone.UI.TextField({
+        model : user,
+        content : 'firstName',
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        formLabelContent : 'First Name',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(firstName3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      firstName3.setError('Is this really your first name?');
+      
+      /* 
+       * Component: Backbone.UI.TextField
+       * Errors: disclosure / below
+       */
+      window.firstName4 = new Backbone.UI.TextField({
+        model : user,
+        content : 'firstName',
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        formLabelContent : 'First Name',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(firstName4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      firstName4.setError('Is this really your first name?');
+      
+      /* 
+       * Component: Backbone.UI.TextField
+       * Errors: disclosure / right
+       */
+      window.firstName5 = new Backbone.UI.TextField({
+        model : user,
+        content : 'firstName',
+        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        formLabelContent : 'First Name',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(firstName5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      firstName5.setError('Is this really your first name?');
+      
+      
+      
+      document.body.appendChild($.el.h2('TextArea examples:'));
+      
+      var areaModel = new Backbone.Model({
+        val : 'I was thinking about clouds.',
+      });
+      
+      /* 
+       * Component: Backbone.UI.TextArea
+       * Errors: none
+       */
+      window.area1 = new Backbone.UI.TextArea({
+        model : areaModel,
+        content : 'val',
+        formLabelContent : 'Describe your problem'
+      }).render();
+      document.body.appendChild(area1.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      /* 
+       * Component: Backbone.UI.TextArea
+       * Errors: inform / below
+       */
+      window.area2= new Backbone.UI.TextArea({
+        model : areaModel,
+        content : 'val',
+        formLabelContent : 'Describe your problem',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(area2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      area2.setError("Not a good description!");
+      
+      /* 
+       * Component: Backbone.UI.TextArea
+       * Errors: inform / right
+       */
+      window.area3 = new Backbone.UI.TextArea({
+        model : areaModel,
+        content : 'val',
+        formLabelContent : 'Describe your problem',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(area3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      area3.setError("Not a good description!");
+      
+      /* 
+       * Component: Backbone.UI.TextArea
+       * Errors: disclosure / below
+       */
+      window.area4 = new Backbone.UI.TextArea({
+        model : areaModel,
+        content : 'val',
+        formLabelContent : 'Describe your problem',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(area4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      area4.setError("Not a good description!");
+      
+      /* 
+       * Component: Backbone.UI.TextArea
+       * Errors: disclosure / right
+       */
+      window.area5 = new Backbone.UI.TextArea({
+        model : areaModel,
+        content : 'val',
+        formLabelContent : 'Describe your problem',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(area5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+
+      area5.setError("Not a good description!");
+
+      
+      
+      document.body.appendChild($.el.h2('Checkbox examples:'));
+      
+      window.checkModel = new Backbone.Model({
+        val : false,
+        label : 'I agree to terms'  
+      });
+      
+      /* 
+       * Component: Backbone.UI.Checkbox
+       * Errors: none
+       */
+      window.check1 = new Backbone.UI.Checkbox({
+        model : checkModel,
+        content : 'val',
+        labelContent : 'Hello world',
         glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
-        content : 'press me'
+        errorType : 'inform',
+        errorPosition : 'right'
       }).render();
-      document.body.appendChild(button.el);
+      document.body.appendChild(check1.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
-
-      button = new Backbone.UI.Button({
-        glyphCss : 'url(tier_target_icons.png) -1px -57px',
-        content : 'press me'
+      
+      /* 
+       * Component: Backbone.UI.Checkbox
+       * Errors: inform / below
+       */
+      window.check3 = new Backbone.UI.Checkbox({
+        model : checkModel,
+        content : 'val',
+        labelContent : 'label',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        errorType : 'inform',
+        errorPosition : 'below'
       }).render();
-      document.body.appendChild(button.el);
+      document.body.appendChild(check3.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
-
-      button = new Backbone.UI.Button({
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'press me'
+      
+      check3.setError("check it yo!");
+      
+      /* 
+       * Component: Backbone.UI.Checkbox
+       * Errors: inform / right
+       */
+      window.check5 = new Backbone.UI.Checkbox({
+        model : checkModel,
+        content : 'val',
+        labelContent : 'label',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        errorType : 'inform',
+        errorPosition : 'right'
       }).render();
-      document.body.appendChild(button.el);
+      document.body.appendChild(check5.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+      
+      check5.setError("check it yo!");
+      
+      /* 
+       * Component: Backbone.UI.Checkbox
+       * Errors: disclosure / below
+       */
+      window.check2 = new Backbone.UI.Checkbox({
+        model : checkModel,
+        content : 'val',
+        labelContent : 'label',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(check2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      check2.setError("check it yo!");
+      
+      /* 
+       * Component: Backbone.UI.Checkbox
+       * Errors: disclosure / right
+       */
+      window.check4 = new Backbone.UI.Checkbox({
+        model : checkModel,
+        content : 'val',
+        labelContent : 'label',
+        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(check4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      check4.setError("check it yo!");
 
+
+
+      document.body.appendChild($.el.h2('Radiogroup examples:'));
+
+
+      var radioModel = new Backbone.Model();
+      
       var items = [
-        {label : 'one', glyphCss : 'url(time_date.png) 0 2px no-repeat'}, 
-        {label : 'two', glyphCss : 'url(time_date.png) 0 -24px no-repeat'}, 
-        {label : 'three', glyphRightCss : 'url(time_date.png) 0 2px no-repeat'}];
+        {label : 'one', left : 'url(time_date.png) 0 2px no-repeat'}, 
+        {label : 'two', left : 'url(time_date.png) 0 -24px no-repeat'}, 
+        {label : 'three', right : 'url(time_date.png) 0 2px no-repeat'}];
 
-      var pulldown = new Backbone.UI.Pulldown({
+      /* 
+       * Component: Backbone.UI.RadioGroup
+       * Errors: none
+       */
+      window.group1 = new Backbone.UI.RadioGroup({
+        model : radioModel,
+        content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'glyphCss',
-        altGlyphRightCss : 'glyphRightCss',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat'
+        altGlyphCss : 'left',
+        altGlyphRightCss : 'right',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'How many fingers am I holding up?',
+        errorType : 'inform',
+        errorPosition : 'below'
       }).render();
-      document.body.appendChild(pulldown.el);
+      document.body.appendChild(group1.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
-
-      var field = new Backbone.UI.TextField({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
-      }).render();
-      document.body.appendChild(field.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      field = new Backbone.UI.TextField({
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
-      }).render();
-      document.body.appendChild(field.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      field = new Backbone.UI.TextField({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
-      }).render();
-      document.body.appendChild(field.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      var link = new Backbone.UI.Link({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
-      }).render();
-      document.body.appendChild(link.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      var link = new Backbone.UI.Link({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
-      }).render();
-      document.body.appendChild(link.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      var link = new Backbone.UI.Link({
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'text time'
-      }).render();
-      document.body.appendChild(link.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      var checkbox = new Backbone.UI.Checkbox({
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
-        content : 'check me'
-      }).render();
-      document.body.appendChild(checkbox.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-
-      var group = new Backbone.UI.RadioGroup({
+      
+      /* 
+       * Component: Backbone.UI.RadioGroup
+       * Errors: inform / below
+       */
+      window.group2 = new Backbone.UI.RadioGroup({
+        model : radioModel,
+        content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'glyphCss',
-        altGlyphRightCss : 'glyphRightCss',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat'
+        altGlyphCss : 'left',
+        altGlyphRightCss : 'right',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'How many fingers am I holding up?',
+        errorType : 'inform',
+        errorPosition : 'below'
       }).render();
-      document.body.appendChild(group.el);
+      document.body.appendChild(group2.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+      
+      group2.setError("Pick one please.");
+      
+      /* 
+       * Component: Backbone.UI.RadioGroup
+       * Errors: inform / right
+       */
+      window.group3 = new Backbone.UI.RadioGroup({
+        model : radioModel,
+        content : 'choice',
+        alternatives : items,
+        altLabelContent : 'label',
+        altGlyphCss : 'left',
+        altGlyphRightCss : 'right',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'How many fingers am I holding up?',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(group3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      group3.setError("Pick one please.");
+      
+      /* 
+       * Component: Backbone.UI.RadioGroup
+       * Errors: disclosure / below
+       */
+      window.group4 = new Backbone.UI.RadioGroup({
+        model : radioModel,
+        content : 'choice',
+        alternatives : items,
+        altLabelContent : 'label',
+        altGlyphCss : 'left',
+        altGlyphRightCss : 'right',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'How many fingers am I holding up?',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(group4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      group4.setError("Pick one please.");
+      
+      /* 
+       * Component: Backbone.UI.RadioGroup
+       * Errors: disclosure / right
+       */
+      window.group5 = new Backbone.UI.RadioGroup({
+        model : radioModel,
+        content : 'choice',
+        alternatives : items,
+        altLabelContent : 'label',
+        altGlyphCss : 'left',
+        altGlyphRightCss : 'right',
+        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        formLabelContent : 'How many fingers am I holding up?',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(group5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      group5.setError("Pick one please.");
 
-      var picker = new Backbone.UI.DatePicker({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px'
-      }).render();
-      document.body.appendChild(picker.el);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
-      $.el.br().appendTo(document.body);
 
-      picker = new Backbone.UI.TimePicker({
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px'
+
+      document.body.appendChild($.el.h2('DatePicker examples:'));
+      
+      var dateModel = new Backbone.Model({
+        now : new Date()
+      });
+
+
+      /* 
+       * Component: Backbone.UI.DatePicker
+       * Errors: none
+       */
+      window.datepicker1 = new Backbone.UI.DatePicker({
+        model : dateModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        formLabelContent : 'Your Birthday',
+        errorType : 'inform',
+        errorPosition : 'below'
       }).render();
-      document.body.appendChild(picker.el);
+      document.body.appendChild(datepicker1.el);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
       $.el.br().appendTo(document.body);
+      
+      datepicker1.setError("Are you sure?");
+
+      /* 
+       * Component: Backbone.UI.DatePicker
+       * Errors: inform / below
+       */
+      window.datepicker2 = new Backbone.UI.DatePicker({
+        model : dateModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        formLabelContent : 'Your Birthday',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(datepicker2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      datepicker2.setError("Are you sure?");
+      
+      /* 
+       * Component: Backbone.UI.DatePicker
+       * Errors: inform / right
+       */
+      window.datepicker2 = new Backbone.UI.DatePicker({
+        model : dateModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        formLabelContent : 'Your Birthday',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(datepicker2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      datepicker2.setError("Are you sure?");
+      
+      /* 
+       * Component: Backbone.UI.DatePicker
+       * Errors: disclosure / below
+       */
+      window.datepicker3 = new Backbone.UI.DatePicker({
+        model : dateModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        formLabelContent : 'Your Birthday',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(datepicker3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      datepicker3.setError("Are you sure?");
+      
+      /* 
+       * Component: Backbone.UI.DatePicker
+       * Errors: disclosure / right
+       */
+      window.datepicker4 = new Backbone.UI.DatePicker({
+        model : dateModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        formLabelContent : 'Your Birthday',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(datepicker4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      datepicker4.setError("Are you sure?");      
+      
+      
+      document.body.appendChild($.el.h2('TimePicker examples:'));
+      
+      var timeModel = new Backbone.Model({
+        now : new Date()
+      });
+
+
+      /* 
+       * Component: Backbone.UI.TimePicker
+       * Errors: none
+       */
+      window.timepicker1 = new Backbone.UI.TimePicker({
+        model : timeModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        formLabelContent : 'Set Alarm',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(timepicker1.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      /* 
+       * Component: Backbone.UI.TimePicker
+       * Errors: inform / below
+       */
+      window.timepicker2 = new Backbone.UI.TimePicker({
+        model : timeModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        formLabelContent : 'Set Alarm',
+        errorType : 'inform',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(timepicker2.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      timepicker2.setError("You can't sleep that day.");
+      
+      /* 
+       * Component: Backbone.UI.TimePicker
+       * Errors: inform / right
+       */
+      window.timepicker3 = new Backbone.UI.TimePicker({
+        model : timeModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        formLabelContent : 'Set Alarm',
+        errorType : 'inform',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(timepicker3.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      timepicker3.setError("You can't sleep that day.");
+      
+      /* 
+       * Component: Backbone.UI.TimePicker
+       * Errors: disclosure / below
+       */
+      window.timepicker4 = new Backbone.UI.TimePicker({
+        model : timeModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        formLabelContent : 'Set Alarm',
+        errorType : 'disclosure',
+        errorPosition : 'below'
+      }).render();
+      document.body.appendChild(timepicker4.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      timepicker4.setError("You can't sleep that day.");
+      
+      /* 
+       * Component: Backbone.UI.TimePicker
+       * Errors: none
+       */
+      window.timepicker5 = new Backbone.UI.TimePicker({
+        model : timeModel,
+        content : 'now',
+        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        formLabelContent : 'Set Alarm',
+        errorType : 'disclosure',
+        errorPosition : 'right'
+      }).render();
+      document.body.appendChild(timepicker5.el);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      $.el.br().appendTo(document.body);
+      
+      timepicker5.setError("You can't sleep that day.");
+
+
+          var button = new Backbone.UI.Button({
+            glyphCss : 'url(tier_target_icons.png) -1px -1px',
+            glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+            content : 'press me'
+          }).render();
+          document.body.appendChild(button.el);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+
+          button = new Backbone.UI.Button({
+            glyphCss : 'url(tier_target_icons.png) -1px -57px',
+            content : 'press me'
+          }).render();
+          document.body.appendChild(button.el);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+
+          button = new Backbone.UI.Button({
+            glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+            content : 'press me'
+          }).render();
+          document.body.appendChild(button.el);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+
+          var link = new Backbone.UI.Link({
+            glyphCss : 'url(tier_target_icons.png) -1px -1px',
+            glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+            content : 'text time'
+          }).render();
+          document.body.appendChild(link.el);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+
+          link = new Backbone.UI.Link({
+            glyphCss : 'url(tier_target_icons.png) -1px -1px',
+            content : 'text time'
+          }).render();
+          document.body.appendChild(link.el);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+
+          link = new Backbone.UI.Link({
+            glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+            content : 'text time'
+          }).render();
+          document.body.appendChild(link.el);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+          $.el.br().appendTo(document.body);
+
+      
     });
 
   </script>

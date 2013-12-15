@@ -94,7 +94,7 @@ task :doc  => [:build] do
 
     options = {}
     comments = []
-    options_node.each do |node|
+    (options_node || []).each do |node|
       node.comments.each { |comment| comments << comment.value.gsub(/^\/\//, '') }
       if node.kind_of? RKelly::Nodes::PropertyNode
         if comments.length > 0
@@ -144,6 +144,9 @@ task :doc  => [:build] do
 
   src.gsub!('<!-- COLLECTION_OPTIONS -->', 
     build_options(collect_option_comments('src/js/collection_view.js')))
+    
+  src.gsub!('<!-- ERROR_OPTIONS -->', 
+    build_options(collect_option_comments('src/js/has_error.js')))  
 
   # insert widgets and their associated option comments
   src.gsub!('<!-- MODEL_BOUND -->', build_components('doc/src/widgets/model'))

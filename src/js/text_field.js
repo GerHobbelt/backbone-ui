@@ -25,7 +25,8 @@
     input : null,
 
     initialize : function() {
-      this.mixin([Backbone.UI.HasModel, Backbone.UI.HasGlyph]);
+      this.mixin([Backbone.UI.HasModel, Backbone.UI.HasGlyph, 
+        Backbone.UI.HasFormLabel, Backbone.UI.HasError, Backbone.UI.HasFocus]);
       _(this).bindAll('_refreshValue');
     
       $(this.el).addClass('text_field');
@@ -61,16 +62,18 @@
         pattern : this.options.pattern,
         value : value});
 
-      // insert text_wrapper
+      // insert glyph if exist
+      this._parent = $.el.div({className : 'text_wrapper'});
+      var content = this.input;
       var glyphCss = this.resolveGlyph(this.model, this.options.glyphCss);
       var glyphRightCss = this.resolveGlyph(this.model, this.options.glyphRightCss);
-      var contentEl = this.insertGlyphLayout(glyphCss, glyphRightCss, this.el);
-      contentEl.appendChild($.el.div({className : 'input_wrapper'}, this.input));
-      if(glyphCss) $(this.el).addClass('has_glyph');
-      if(glyphRightCss) $(this.el).addClass('has_glyph_right');
+      this.insertGlyphLayout(glyphCss, glyphRightCss, content, this._parent);
       
-      //this.el.appendChild($.el.div({className : 'input_wrapper'}, this.input));
-
+      // add focusin / focusout
+      this.setupFocus(this.input, this._parent);
+            
+      this.el.appendChild(this.wrapWithFormLabel(this._parent));
+      
       this.setEnabled(!this.options.disabled);
 
       return this;

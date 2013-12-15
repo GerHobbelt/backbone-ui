@@ -31,19 +31,7 @@
         }, this);
       }
 
-      // wrap the list in a scroller
-      if(_(this.options.maxHeight).exists()) {
-        var style = 'max-height:' + this.options.maxHeight + 'px';
-        var scroller = new Backbone.UI.Scroller({
-          content : $.el.div({style : style}, this.collectionEl) 
-        }).render();
-
-        this.el.appendChild(scroller.el);
-      }
-      else {
-        this.el.appendChild(this.collectionEl);
-      }
-
+      this.el.appendChild(this.collectionEl);
       this._updateClassNames();
 
       return this;
@@ -59,10 +47,8 @@
         }
 
         else {
-          var view = new this.options.itemView({
-            model : model,
-            options : this.options.itemViewOptions
-          });
+          var view = new this.options.itemView(_({ model : model }).extend(
+            this.options.itemViewOptions));
           view.render();
           this.itemViews[model.cid] = view;
           content = view.el;

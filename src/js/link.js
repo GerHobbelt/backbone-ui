@@ -32,10 +32,12 @@
 
       $(this.el).empty();
       
+      var content = $.el.span(labelText);
+      
       var glyphCss = this.resolveGlyph(this.model, this.options.glyphCss);
       var glyphRightCss = this.resolveGlyph(this.model, this.options.glyphRightCss);
-      var contentEl = this.insertGlyphLayout(glyphCss, glyphRightCss, this.el);
-      contentEl.appendChild($.el.span({className : 'label'}, labelText));
+
+      this.insertGlyphLayout(glyphCss, glyphRightCss, content, this.el);
       
       // add appropriate class names
       this.setEnabled(!this.options.disabled);
@@ -51,7 +53,7 @@
         this.el.removeAttribute('href');
       }
       this.options.disabled = !enabled;
-      $(this.el)[enabled ? 'removeClass' : 'addClass']('disabled');
+      $(this.el).toggleClass('disabled', !enabled);
     }
   });
 }());

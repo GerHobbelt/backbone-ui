@@ -12,7 +12,10 @@
       // in the bound model's property.  Omit this option if you'd like the choice 
       // object itself to represent the value.
       altValueContent : null,
-
+      
+      // If provided this content will wrap the component with additional label.
+      formLabelContent : null,
+      
       // The property of the individual choice representing CSS 
       // background rule for the left glyph 
       altGlyphCss : null,
