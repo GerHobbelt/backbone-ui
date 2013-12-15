@@ -52,6 +52,7 @@
   <link rel='stylesheet' type='text/css' href='../src/css/text_field.css'>
   <link rel='stylesheet' type='text/css' href='../src/css/time_picker.css'>
   <link rel='stylesheet' type='text/css' href='../doc/src/skins/perka/perka.css'>
+  <link rel='stylesheet' type='text/css' href='./styles.css'>
 
   <style>
     
@@ -65,19 +66,6 @@
 
   <script type="text/javascript">
     $(window).ready(function() {
-      
-      
-      
-      // var obj = $.el.object({data : 'checkmark.svg', width : '100px', height : '100px'});
-      //       
-      //       obj.addEventListener('load', function() { 
-      //         var svgDoc = obj.contentDocument;
-      //         $(svgDoc).find('path').attr({fill : 'pink'});
-      //       }, false);
-      //       
-      //       document.body.appendChild(obj);
-      
-      
       
       Backbone.UI.setSkin('perka');
 
@@ -228,7 +216,7 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'countryFormLabel'
       }).render();
       document.body.appendChild(pulldown1.el);
@@ -247,8 +235,8 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        glyphLeftClassName : 'icon-filter',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'countryFormLabel',
         errorPosition : 'right'
       }).render();
@@ -269,7 +257,7 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'countryFormLabel'
       }).render();
       document.body.appendChild(pulldown3.el);
@@ -289,7 +277,7 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'countryFormLabel',
         errorPosition : 'right',
         errorType : 'disclosure'
@@ -311,7 +299,7 @@
         alternatives : menuItems,
         altLabelContent : 'label',
         altValueContent : 'value',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'countryFormLabel',
         errorType : 'disclosure'
       }).render();
@@ -337,7 +325,7 @@
       window.firstName1 = new Backbone.UI.TextField({
         model : user,
         content : 'firstName',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'First Name'
       }).render();
       document.body.appendChild(firstName1.el);
@@ -352,7 +340,7 @@
       window.firstName2 = new Backbone.UI.TextField({
         model : user,
         content : 'firstName',
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'First Name',
         errorType : 'inform',
         errorPosition : 'below'
@@ -371,8 +359,8 @@
       window.firstName3 = new Backbone.UI.TextField({
         model : user,
         content : 'firstName',
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphLeftClassName : 'icon-filter',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'First Name',
         errorType : 'inform',
         errorPosition : 'right'
@@ -391,8 +379,8 @@
       window.firstName4 = new Backbone.UI.TextField({
         model : user,
         content : 'firstName',
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphLeftClassName : 'icon-filter',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'First Name',
         errorType : 'disclosure',
         errorPosition : 'below'
@@ -411,8 +399,8 @@
       window.firstName5 = new Backbone.UI.TextField({
         model : user,
         content : 'firstName',
-        glyphCss : 'url(tier_target_icons.png) -1px -1px',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+        glyphLeftClassName : 'icon-filter',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'First Name',
         errorType : 'disclosure',
         errorPosition : 'right'
@@ -535,7 +523,7 @@
         model : checkModel,
         content : 'val',
         labelContent : 'Hello world',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        glyphRightClassName : 'icon-edit',
         errorType : 'inform',
         errorPosition : 'right'
       }).render();
@@ -552,7 +540,7 @@
         model : checkModel,
         content : 'val',
         labelContent : 'label',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        glyphRightClassName : 'icon-edit',
         errorType : 'inform',
         errorPosition : 'below'
       }).render();
@@ -571,7 +559,7 @@
         model : checkModel,
         content : 'val',
         labelContent : 'label',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        glyphRightClassName : 'icon-edit',
         errorType : 'inform',
         errorPosition : 'right'
       }).render();
@@ -590,7 +578,7 @@
         model : checkModel,
         content : 'val',
         labelContent : 'label',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        glyphRightClassName : 'icon-edit',
         errorType : 'disclosure',
         errorPosition : 'below'
       }).render();
@@ -609,7 +597,7 @@
         model : checkModel,
         content : 'val',
         labelContent : 'label',
-        glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+        glyphRightClassName : 'icon-edit',
         errorType : 'disclosure',
         errorPosition : 'right'
       }).render();
@@ -628,9 +616,9 @@
       var radioModel = new Backbone.Model();
       
       var items = [
-        {label : 'one', left : 'url(time_date.png) 0 2px no-repeat'}, 
-        {label : 'two', left : 'url(time_date.png) 0 -24px no-repeat'}, 
-        {label : 'three', right : 'url(time_date.png) 0 2px no-repeat'}];
+        {label : 'one', left : 'icon-wrench'}, 
+        {label : 'two', left : 'icon-trash'}, 
+        {label : 'three', right : 'icon-bulb'}];
 
       /* 
        * Component: Backbone.UI.RadioGroup
@@ -641,9 +629,9 @@
         content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'left',
-        altGlyphRightCss : 'right',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        altGlyphLeftClassName: 'left',
+        altGlyphRightClassName : 'right',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'How many fingers am I holding up?',
         errorType : 'inform',
         errorPosition : 'below'
@@ -662,9 +650,9 @@
         content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'left',
-        altGlyphRightCss : 'right',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        altGlyphLeftClassName : 'left',
+        altGlyphRightClassName : 'right',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'How many fingers am I holding up?',
         errorType : 'inform',
         errorPosition : 'below'
@@ -685,9 +673,9 @@
         content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'left',
-        altGlyphRightCss : 'right',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        altGlyphLeftClassName : 'left',
+        altGlyphRightClassName : 'right',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'How many fingers am I holding up?',
         errorType : 'inform',
         errorPosition : 'right'
@@ -708,9 +696,9 @@
         content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'left',
-        altGlyphRightCss : 'right',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        altGlyphLeftClassName : 'left',
+        altGlyphRightClassName : 'right',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'How many fingers am I holding up?',
         errorType : 'disclosure',
         errorPosition : 'below'
@@ -731,9 +719,9 @@
         content : 'choice',
         alternatives : items,
         altLabelContent : 'label',
-        altGlyphCss : 'left',
-        altGlyphRightCss : 'right',
-        glyphCss : 'url(tier_target_icons.png) -1px -57px no-repeat',
+        altGlyphLeftClassName : 'left',
+        altGlyphRightClassName : 'right',
+        glyphLeftClassName : 'icon-filter',
         formLabelContent : 'How many fingers am I holding up?',
         errorType : 'disclosure',
         errorPosition : 'right'
@@ -761,7 +749,7 @@
       window.datepicker1 = new Backbone.UI.DatePicker({
         model : dateModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Your Birthday',
         errorType : 'inform',
         errorPosition : 'below'
@@ -780,7 +768,7 @@
       window.datepicker2 = new Backbone.UI.DatePicker({
         model : dateModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Your Birthday',
         errorType : 'inform',
         errorPosition : 'below'
@@ -799,7 +787,7 @@
       window.datepicker2 = new Backbone.UI.DatePicker({
         model : dateModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Your Birthday',
         errorType : 'inform',
         errorPosition : 'right'
@@ -818,7 +806,7 @@
       window.datepicker3 = new Backbone.UI.DatePicker({
         model : dateModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Your Birthday',
         errorType : 'disclosure',
         errorPosition : 'below'
@@ -837,7 +825,7 @@
       window.datepicker4 = new Backbone.UI.DatePicker({
         model : dateModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 2px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Your Birthday',
         errorType : 'disclosure',
         errorPosition : 'right'
@@ -864,7 +852,7 @@
       window.timepicker1 = new Backbone.UI.TimePicker({
         model : timeModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Set Alarm',
         errorType : 'inform',
         errorPosition : 'below'
@@ -881,7 +869,7 @@
       window.timepicker2 = new Backbone.UI.TimePicker({
         model : timeModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Set Alarm',
         errorType : 'inform',
         errorPosition : 'below'
@@ -900,7 +888,7 @@
       window.timepicker3 = new Backbone.UI.TimePicker({
         model : timeModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Set Alarm',
         errorType : 'inform',
         errorPosition : 'right'
@@ -919,7 +907,7 @@
       window.timepicker4 = new Backbone.UI.TimePicker({
         model : timeModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Set Alarm',
         errorType : 'disclosure',
         errorPosition : 'below'
@@ -938,7 +926,7 @@
       window.timepicker5 = new Backbone.UI.TimePicker({
         model : timeModel,
         content : 'now',
-        glyphRightCss : 'url(time_date.png) 0 -24px no-repeat',
+        glyphRightClassName : 'icon-edit',
         formLabelContent : 'Set Alarm',
         errorType : 'disclosure',
         errorPosition : 'right'
@@ -952,8 +940,8 @@
 
 
           var button = new Backbone.UI.Button({
-            glyphCss : 'url(tier_target_icons.png) -1px -1px',
-            glyphRightCss : 'url(tier_target_icons.png) -1px -29px',
+            glyphLeftClassName : 'icon-filter',
+            glyphRightClassName : 'icon-edit',
             content : 'press me'
           }).render();
           document.body.appendChild(button.el);
@@ -962,7 +950,7 @@
           $.el.br().appendTo(document.body);
 
           button = new Backbone.UI.Button({
-            glyphCss : 'url(tier_target_icons.png) -1px -57px',
+            glyphLeftClassName : 'icon-filter',
             content : 'press me'
           }).render();
           document.body.appendChild(button.el);
@@ -971,7 +959,7 @@
           $.el.br().appendTo(document.body);
 
           button = new Backbone.UI.Button({
-            glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+            glyphRightClassName : 'icon-edit',
             content : 'press me'
           }).render();
           document.body.appendChild(button.el);
@@ -980,8 +968,8 @@
           $.el.br().appendTo(document.body);
 
           var link = new Backbone.UI.Link({
-            glyphCss : 'url(tier_target_icons.png) -1px -1px',
-            glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+            glyphLeftClassName : 'icon-filter',
+            glyphRightClassName : 'icon-edit',
             content : 'text time'
           }).render();
           document.body.appendChild(link.el);
@@ -990,7 +978,7 @@
           $.el.br().appendTo(document.body);
 
           link = new Backbone.UI.Link({
-            glyphCss : 'url(tier_target_icons.png) -1px -1px',
+            glyphLeftClassName : 'icon-filter',
             content : 'text time'
           }).render();
           document.body.appendChild(link.el);
@@ -999,7 +987,7 @@
           $.el.br().appendTo(document.body);
 
           link = new Backbone.UI.Link({
-            glyphRightCss : 'url(tier_target_icons.png) -1px -1px',
+            glyphRightClassName : 'icon-edit',
             content : 'text time'
           }).render();
           document.body.appendChild(link.el);
